@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val secondFragment=SearchFragment()
         val thirdFragment=CartFragment()
         val fourthFragment=ProfileFragment()
-       
+
          */
 
         binding = ActivityMainBinding.inflate(layoutInflater)
