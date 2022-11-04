@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056748664101:android:ae5c1832c0d0aa885456cc",
+        "android_client_info": {
+          "package_name": "com.example.pianifit_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056748664101-1lkjatttm36snpf8b3767ets9kn23nos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr8uIghbWtP1Hb8JYBaYFDJBm-fPHAe1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056748664101-1lkjatttm36snpf8b3767ets9kn23nos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

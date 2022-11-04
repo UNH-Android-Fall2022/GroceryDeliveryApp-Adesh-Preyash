@@ -1,18 +1,19 @@
 package com.example.grocerydelivery
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.appcompat.app.AppCompatDelegate
 import com.example.grocerydelivery.databinding.ActivityMainBinding
-import com.example.grocerydelivery.ui.cart.CartFragment
-import com.example.grocerydelivery.ui.home.HomeFragment
-import com.example.grocerydelivery.ui.profile.ProfileFragment
-import com.example.grocerydelivery.ui.search.SearchFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+
 //import com.google.firebase.firestore.ktx.firestore
 //import com.google.firebase.ktx.Firebase
 
@@ -20,12 +21,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val TAG = "GroceryDeliveryAndroidDebug"
+    private var mAuth: FirebaseAuth? = null
     //private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
         /*
         val firstFragment=HomeFragment()
         val secondFragment=SearchFragment()
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val fourthFragment=ProfileFragment()
 
          */
-
+        //mAuth = FirebaseAuth.getInstance()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -51,5 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         navView?.setupWithNavController(navController)
     }
+
+
 }
 
