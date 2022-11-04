@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
         binding.buttonLogin.setOnClickListener{
             Log.d(ContentValues.TAG,"Login Button Clicked")
-            val action=HomeFragmentDirections.actionNavigationHomeToLoginFragment()
+            val action=HomeFragmentDirections.actionNavigationHomeToLoginFormFragment()
             findNavController().navigate(action)
         }
         return root

@@ -15,8 +15,8 @@
         android:name="com.example.grocerydelivery.ui.home.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_navigation_home_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_navigation_home_to_loginFormFragment"
+            app:destination="@id/loginFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -27,8 +27,7 @@
         android:name="com.example.grocerydelivery.ui.search.SearchFragment"
         android:label="SearchFragment" />
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.grocerydelivery.ui.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/loginFormFragment"
+        android:name="com.example.grocerydelivery.ui.login_user.LoginFormFragment"
+        android:label="LoginFormFragment" />
 </navigation>
