@@ -17,6 +17,15 @@
         <action
             android:id="@+id/action_navigation_home_to_loginFormFragment"
             app:destination="@id/loginFormFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_registerFormFragment"
+            app:destination="@id/registerFormFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_registerActivity"
+            app:destination="@id/registerActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_loginActivity"
+            app:destination="@id/loginActivity" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -30,4 +39,17 @@
         android:id="@+id/loginFormFragment"
         android:name="com.example.grocerydelivery.ui.login_user.LoginFormFragment"
         android:label="LoginFormFragment" />
+    <fragment
+        android:id="@+id/registerFormFragment"
+        android:name="com.example.grocerydelivery.ui.register_user.RegisterFormFragment"
+        android:label="RegisterFormFragment" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.grocerydelivery.RegisterActivity"
+        android:label="RegisterActivity" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.grocerydelivery.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

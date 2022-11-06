@@ -30,17 +30,14 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        //val textView: TextView = binding.textNotifications
-        //notificationsViewModel.text.observe(viewLifecycleOwner) {
-        //  textView.text = it
-        //}
-
         binding.buttonLogin.setOnClickListener{
             Log.d(ContentValues.TAG,"Login Button Clicked")
-            val action=HomeFragmentDirections.actionNavigationHomeToLoginFormFragment()
-            findNavController().navigate(action)
-        }
+            val action=HomeFragmentDirections.actionNavigationHomeToLoginActivity()
+            findNavController().navigate(action) }
+        binding.buttonSignUp.setOnClickListener{
+            Log.d(ContentValues.TAG,"Sign up Button Clicked")
+            val action1=HomeFragmentDirections.actionNavigationHomeToRegisterActivity()
+            findNavController().navigate(action1)}
         return root
     }
 
