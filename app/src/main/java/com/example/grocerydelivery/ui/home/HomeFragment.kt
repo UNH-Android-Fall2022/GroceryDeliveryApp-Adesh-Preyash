@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeFragment : Fragment() {
@@ -30,6 +35,7 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        /*
         binding.buttonLogin.setOnClickListener{
             Log.d(ContentValues.TAG,"Login Button Clicked")
             val action=HomeFragmentDirections.actionNavigationHomeToLoginActivity()
@@ -37,7 +43,9 @@ class HomeFragment : Fragment() {
         binding.buttonSignUp.setOnClickListener{
             Log.d(ContentValues.TAG,"Sign up Button Clicked")
             val action1=HomeFragmentDirections.actionNavigationHomeToRegisterActivity()
-            findNavController().navigate(action1)}
+            findNavController().navigate(action1)}*/
+
+
         return root
     }
 

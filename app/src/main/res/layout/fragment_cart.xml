@@ -9,12 +9,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyler_view_workouts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="405dp"
+        android:layout_height="639dp"
         android:clipToPadding="false"
         android:padding="10dp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="-168dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="3dp"
         tools:listitem="@layout/cart_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

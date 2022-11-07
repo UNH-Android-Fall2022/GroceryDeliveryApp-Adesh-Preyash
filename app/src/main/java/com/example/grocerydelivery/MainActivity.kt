@@ -1,13 +1,18 @@
 package com.example.grocerydelivery
 
+import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.grocerydelivery.databinding.ActivityMainBinding
+import com.example.grocerydelivery.ui.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -38,8 +43,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*binding.buttonLogin.setOnClickListener{
+            Log.d(ContentValues.TAG,"Login Button Clicked")
+            val action= HomeFragmentDirections.actionNavigationHomeToLoginActivity()
+            findNavController().navigate(action) }
+        binding.buttonSignUp.setOnClickListener{
+            Log.d(ContentValues.TAG,"Sign up Button Clicked")
+            val action1= HomeFragmentDirections.actionNavigationHomeToRegisterActivity()
+            findNavController().navigate(action1)}*/
+        binding.buttonLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
-        val navView: BottomNavigationView? = binding.bottomNavigationView
+        binding.buttonSignUp.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        /*val navView: BottomNavigationView? = binding.bottomNavigationView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
@@ -51,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        navView?.setupWithNavController(navController)
+        navView?.setupWithNavController(navController)*/
     }
 
 
