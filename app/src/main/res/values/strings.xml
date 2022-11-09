@@ -23,4 +23,7 @@
     <string name="sign_up">VERIFY AND Sign up</string>
     <string name="send_otp">SEND OTP</string>
     <string name="enter_otp_here">ENTER OTP HERE</string>
+
+    <string name="safety_net_API_KEY">"AIzaSyD5b2-ffi1e5-TQNAwNQu4N5xOV9CFeRvc"</string>
+
 </resources>
