@@ -1,66 +1,93 @@
 package com.example.grocerydelivery
 
 import android.content.Intent
-import android.icu.util.TimeUnit
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.grocerydelivery.databinding.ActivityRegisterBinding
+import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlin.time.DurationUnit
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterBinding
+    //private lateinit var binding: ActivityRegisterBinding
     private val db = Firebase.firestore
     private val TAG="GroceryAndroidDebug"
     private lateinit var auth: FirebaseAuth
+    private var storedVerificationId : String?=""
+    private lateinit var resendingToken: PhoneAuthProvider.ForceResendingToken
+    private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    private var _binding: ActivityRegisterBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        _binding = ActivityRegisterBinding.inflate(layoutInflater)
+        val root: View = binding.root
         auth=Firebase.auth
+        FirebaseApp.initializeApp(this)
 
-        /*
-        binding.buttonSignup1.setOnClickListener{
-            val intent= Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-        binding.buttonSignup1.setOnClickListener{
-            performSignup()
-        }
+        /*val sendOtp : Button = findViewById(R.id.sendOtp)
+        sendOtp.setOnClickListener{
+            val inputPassword=findViewById<EditText>(R.id.password_input)
+            val inputUsername=findViewById<EditText>(R.id.username_input)
+            val inputPhone=findViewById<EditText>(R.id.phoneNumber)
+            val ph=inputPhone.text.toString()
+            if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() || inputPhone.text.isEmpty())
+            {
+                Toast.makeText(baseContext, "Please fill all fields",
+                    Toast.LENGTH_SHORT).show()
 
-         */
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+            }
+            Log.d(TAG, "PHONE NUMBER PASSED ($ph)")
+            startPhoneNumberVerification(ph)
+            Toast.makeText(baseContext, "OTP sent",
+                Toast.LENGTH_SHORT).show()
+        }*/
 
         val signupButton : Button = findViewById(R.id.buttonSignup1)
+
         signupButton.setOnClickListener{
+            /*val inputOTP=findViewById<EditText>(R.id.OTP)
+            val otp=inputOTP.text.toString()
+            verifyPhoneNumberWithCode(storedVerificationId, otp)*/
             performSignup()
         }
 
+        callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
 
+            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                Log.d(TAG,"Phone number verification completed : $credential")
+            }
+            override fun onVerificationFailed(e: FirebaseException) {
+                Log.d(TAG,"Phone number verification failed", e)
+            }
+        }
     }
 
     private fun performSignup()
     {
-        Log.d("GROCERY text output", "Inside function call")
         val inputPassword=findViewById<EditText>(R.id.password_input)
         val inputUsername=findViewById<EditText>(R.id.username_input)
-        val inputPhone=findViewById<EditText>(R.id.editTextPhone)
+        val inputPhone=findViewById<EditText>(R.id.phoneNumber)
 
         if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() )
         {
@@ -78,42 +105,7 @@ class RegisterActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    val profileUpdates = userProfileChangeRequest {
-                        //displayName = "Jane Q. User"
 
-                    }
-                    /*val phoneNumber = phone
-                    val options = PhoneAuthOptions.newBuilder(auth)
-                        .setPhoneNumber(phoneNumber)       // Phone number to verify
-                        .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        //.setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-                        .build()
-                    PhoneAuthProvider.verifyPhoneNumber(options)*/
-                    val phoneNumber = "+14752419166"
-                    val smsCode = "123400"
-
-                    val firebaseAuth = Firebase.auth
-                    val firebaseAuthSettings = firebaseAuth.firebaseAuthSettings
-
-// Configure faking the auto-retrieval with the whitelisted numbers.
-                    firebaseAuthSettings.setAutoRetrievedSmsCodeForPhoneNumber(phoneNumber, smsCode)
-
-                    val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-                        .setPhoneNumber(phoneNumber)
-                        .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS)
-                        .setActivity(this)
-                        .setCallbacks(object:PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                                // Instant verification is applied and a credential is directly returned.
-                                // ...
-                                Log.d("Grocery phone number","Verification successful")
-                            }
-
-                            // ...
-                        })
-                        .build()
-                    PhoneAuthProvider.verifyPhoneNumber(options)
                     val intent= Intent(this, SuccessActivity::class.java)
                     startActivity(intent)
 
@@ -141,5 +133,40 @@ class RegisterActivity : AppCompatActivity() {
         if(currentUser != null){
             //reload()
         }
+    }
+    private fun startPhoneNumberVerification(phoneNumber: String) {
+// [START start_phone_auth]
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber)       // Phone number to verify
+            .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS) // Timeout and unit
+            .setActivity(this)                 // Activity (for callback binding)
+            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+    private fun verifyPhoneNumberWithCode (verificationId: String?, code: String) {
+        Log.d(TAG, "Reach 1")
+        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+        signInWithPhoneAuthCredential(credential)
+    }
+
+    private fun signInWithPhoneAuthCredential (credential: PhoneAuthCredential) {
+        Log.d(TAG, "Reach 2")
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "Reach 3")
+                    Log.d(TAG, "signInWithCredential:success")
+                    val user = task.result?.user
+                    Toast.makeText(this, "Welcome to the jungle :" + user, Toast.LENGTH_SHORT)
+                        .show()
+                    val intent= Intent(this, SuccessActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                    }
+                }
+            }
     }
 }

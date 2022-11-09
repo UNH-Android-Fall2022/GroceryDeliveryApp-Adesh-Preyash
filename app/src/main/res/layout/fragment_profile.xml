@@ -11,7 +11,7 @@
         android:id="@+id/emailView"
         android:layout_width="190dp"
         android:layout_height="50dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="220dp"
         android:text="Email"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,28 +23,16 @@
         android:id="@+id/passwordView"
         android:layout_width="200dp"
         android:layout_height="51dp"
+        android:layout_marginTop="204dp"
+
         android:text="Password"
-
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/phoneView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailView" />
-
-    <TextView
-        android:id="@+id/phoneView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-
-        android:text="Phone Number"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/emailView"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

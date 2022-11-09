@@ -6,77 +6,92 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+
     <EditText
         android:id="@+id/username_input"
         android:layout_width="261dp"
         android:layout_height="53dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="56dp"
         android:autofillHints=""
-        android:hint="Username"
+        android:hint="Username/Email"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/password_input"
         android:layout_width="252dp"
         android:layout_height="53dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="96dp"
         android:autofillHints=""
+
         android:hint="Password"
         android:inputType="textPassword"
-
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_input"
         tools:ignore="MissingConstraints" />
-
-
 
     <Button
         android:id="@+id/buttonSignup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="52dp"
+        android:layout_marginBottom="16dp"
         android:padding="10dp"
         android:text="@string/sign_up"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="258dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="48dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Email Address"
+    <Button
+        android:id="@+id/sendOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        android:inputType="textEmailAddress"
+        android:layout_marginTop="68dp"
         android:padding="10dp"
+        android:text="@string/send_otp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_input"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/phoneNumber"
         android:layout_width="258dp"
         android:layout_height="66dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="100dp"
         android:autofillHints=""
-        android:ems="10"
         android:hint="Contact No"
         android:inputType="phone"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/password_input"
+        tools:ignore="MissingConstraints"
+        tools:text="+918920229232" />
+
+    <EditText
+        android:id="@+id/OTP"
+        android:layout_width="258dp"
+        android:layout_height="66dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/enter_otp_here"
+        android:inputType="phone"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSignup1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sendOtp"
+        app:layout_constraintVertical_bias="0.457"
         tools:ignore="MissingConstraints" />
 
 
