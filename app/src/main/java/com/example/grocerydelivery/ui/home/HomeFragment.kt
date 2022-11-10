@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -30,11 +32,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        //setActivityTitle("Categories")
         val notificationsViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         /*
         binding.buttonLogin.setOnClickListener{
             Log.d(ContentValues.TAG,"Login Button Clicked")
@@ -48,6 +52,9 @@ class HomeFragment : Fragment() {
 
         return root
     }
+    /*private fun Fragment.setActivityTitle(t : String) {
+        (activity as AppCompatActivity?)?.supportActionBar?.title = t
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

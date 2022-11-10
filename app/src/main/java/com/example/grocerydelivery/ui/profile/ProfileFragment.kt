@@ -40,9 +40,9 @@ class ProfileFragment : Fragment() {
             //val photoUrl = user.photoUrl
             binding.emailView.text=email
 
-            val phone=user.phoneNumber.toString()
+            /*val phone=user.phoneNumber.toString()
             Log.d("GROCERY Phone number", phone)
-            binding.phoneView.text=phone
+            binding.phoneView.text=phone*/
 
             // Check if user's email is verified
             //val emailVerified = user.isEmailVerified

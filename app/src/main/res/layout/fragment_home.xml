@@ -5,94 +5,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    android:background="@drawable/app_bg">
 
-    <!--
-    <ImageView
-        android:id="@+id/imageLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/txtGreeting"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928"
-        app:srcCompat="@mipmap/grocery_icon" />
-
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="96dp"
-        android:text="SIGN UP"
+    <RelativeLayout
+        android:layout_width="388dp"
+        android:layout_height="702dp"
+        android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/txtGreeting"
-        app:layout_constraintVertical_bias="0.097" />
-
-    <TextView
-        android:id="@+id/txtGreeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to Grocery Shopping!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.485" />
-
-    <TextView
-        android:id="@+id/txtClickableSellerSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="220dp"
-        android:linksClickable="false"
-        android:text="Become a seller?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.092" />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:text="LOGIN"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGreeting"
-        app:layout_constraintVertical_bias="0.097" />
+        tools:layout_editor_absoluteX="1dp">
 
 
+        <ImageButton
+            android:id="@+id/fruits"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+            android:layout_above="@+id/dairy"
+            android:layout_marginStart="15dp"
 
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toStartOf="@+id/vegetables"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_fruits"
+            app:layout_constraintBottom_toTopOf="@id/dairy"
+            app:layout_constraintEnd_toStartOf="@id/vegetables"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottomNavigationView"
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="parent"
-    app:menu="@menu/bottom_nav_menu"/>
+        <ImageButton
+            android:id="@+id/vegetables"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+            android:layout_above="@+id/breads"
 
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation"/>
-        -->
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_vegetables"
+            app:layout_constraintBottom_toTopOf="@id/breads"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/fruits" />
+
+        <ImageButton
+            android:id="@+id/dairy"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+
+            android:layout_above="@+id/cosmetics"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toStartOf="@+id/breads"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_dairy"
+            app:layout_constraintBottom_toTopOf="@id/cosmetics"
+            app:layout_constraintEnd_toStartOf="@id/breads"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fruits" />
+
+        <ImageButton
+            android:id="@+id/breads"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+            android:layout_above="@+id/cleaning"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_breads"
+            app:layout_constraintBottom_toTopOf="@id/cleaning"
+            app:layout_constraintStart_toEndOf="@id/dairy"
+            app:layout_constraintTop_toBottomOf="@id/vegetables" />
+
+        <ImageButton
+            android:id="@+id/cosmetics"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toStartOf="@+id/cleaning"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_cosmetics"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cleaning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dairy" />
+
+        <ImageButton
+            android:id="@+id/cleaning"
+            android:layout_width="176dp"
+            android:layout_height="188dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_cleaning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.279"
+            app:layout_constraintStart_toEndOf="@id/cosmetics"
+            app:layout_constraintTop_toBottomOf="@id/breads" />
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
