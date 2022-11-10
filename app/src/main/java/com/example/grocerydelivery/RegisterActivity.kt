@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         auth=Firebase.auth
         FirebaseApp.initializeApp(this)
 
-        val sendOtp : Button = findViewById(R.id.sendOtp)
+        /*val sendOtp : Button = findViewById(R.id.sendOtp)
 
         sendOtp.setOnClickListener{
             val inputPassword=findViewById<EditText>(R.id.password_input)
@@ -62,18 +62,18 @@ class RegisterActivity : AppCompatActivity() {
             startPhoneNumberVerification(ph)
             Toast.makeText(baseContext, "OTP sent",
                 Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
         val signupButton : Button = findViewById(R.id.buttonSignup1)
 
         signupButton.setOnClickListener{
-            val inputOTP=findViewById<EditText>(R.id.OTP)
+            /*val inputOTP=findViewById<EditText>(R.id.OTP)
             val otp=inputOTP.text.toString()
-            verifyPhoneNumberWithCode(storedVerificationId, otp)
+            verifyPhoneNumberWithCode(storedVerificationId, otp)*/
             performSignup()
         }
 
-        callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+        /*callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 Log.d(TAG,"Phone number verification completed : $credential")
@@ -81,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
             override fun onVerificationFailed(e: FirebaseException) {
                 Log.d(TAG,"Phone number verification failed", e)
             }
-        }
+        }*/
     }
 
     private fun performSignup()
