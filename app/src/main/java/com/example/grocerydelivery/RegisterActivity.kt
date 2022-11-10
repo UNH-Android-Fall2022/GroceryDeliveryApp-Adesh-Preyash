@@ -44,6 +44,7 @@ class RegisterActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
 
         /*val sendOtp : Button = findViewById(R.id.sendOtp)
+
         sendOtp.setOnClickListener{
             val inputPassword=findViewById<EditText>(R.id.password_input)
             val inputUsername=findViewById<EditText>(R.id.username_input)
@@ -72,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
             performSignup()
         }
 
-        callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+/*        callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 Log.d(TAG,"Phone number verification completed : $credential")
@@ -80,7 +81,7 @@ class RegisterActivity : AppCompatActivity() {
             override fun onVerificationFailed(e: FirebaseException) {
                 Log.d(TAG,"Phone number verification failed", e)
             }
-        }
+        }*/
     }
 
     private fun performSignup()
@@ -142,11 +143,14 @@ class RegisterActivity : AppCompatActivity() {
             .setActivity(this)                 // Activity (for callback binding)
             .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
             .build()
+
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
     private fun verifyPhoneNumberWithCode (verificationId: String?, code: String) {
         Log.d(TAG, "Reach 1")
         val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
+        Log.d(TAG, "Reach 1.5")
+
         signInWithPhoneAuthCredential(credential)
     }
 

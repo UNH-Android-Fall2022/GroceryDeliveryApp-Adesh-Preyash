@@ -39,6 +39,26 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.fruits.setOnClickListener{
+            categories_fruits()
+        }
+        binding.vegetables.setOnClickListener{
+            categories_vegetables()
+        }
+        binding.dairy.setOnClickListener {
+            categories_dairy()
+        }
+        binding.breads.setOnClickListener {
+            categories_breads()
+        }
+        binding.cleaning.setOnClickListener {
+            categories_cleaning()
+        }
+        binding.cosmetics.setOnClickListener {
+            categories_cosmetics()
+        }
+
+
         /*
         binding.buttonLogin.setOnClickListener{
             Log.d(ContentValues.TAG,"Login Button Clicked")
@@ -51,6 +71,32 @@ class HomeFragment : Fragment() {
 
 
         return root
+    }
+
+
+    private fun categories_cosmetics() {
+        TODO("Not yet implemented")
+    }
+
+    private fun categories_cleaning() {
+        TODO("Not yet implemented")
+    }
+
+    private fun categories_breads() {
+        TODO("Not yet implemented")
+    }
+
+    private fun categories_dairy() {
+        TODO("Not yet implemented")
+    }
+
+    private fun categories_vegetables() {
+        TODO("Not yet implemented")
+    }
+
+    private fun categories_fruits() {
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryFruitsFragment()
+        findNavController().navigate(action)
     }
     /*private fun Fragment.setActivityTitle(t : String) {
         (activity as AppCompatActivity?)?.supportActionBar?.title = t

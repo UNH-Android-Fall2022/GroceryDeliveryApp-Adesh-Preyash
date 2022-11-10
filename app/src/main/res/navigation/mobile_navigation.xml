@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_navigation_home_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryFruitsFragment"
+            app:destination="@id/categoryFruitsFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -57,4 +60,9 @@
         android:name="com.example.grocerydelivery.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/categoryFruitsFragment"
+        android:name="com.example.grocerydelivery.ui.home.CategoryFruitsFragment"
+        android:label="fragment_category_fruits"
+        tools:layout="@layout/fragment_category_fruits" />
 </navigation>
