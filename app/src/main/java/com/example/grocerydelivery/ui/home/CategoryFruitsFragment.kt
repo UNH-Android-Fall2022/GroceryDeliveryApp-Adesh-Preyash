@@ -78,7 +78,12 @@ class CategoryFruitsFragment : Fragment() {
         mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
 
         return root
+
+
+
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
