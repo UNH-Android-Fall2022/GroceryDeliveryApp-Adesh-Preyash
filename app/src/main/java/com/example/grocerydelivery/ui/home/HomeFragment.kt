@@ -1,6 +1,7 @@
 package com.example.grocerydelivery.ui.home
 
 import android.content.ContentValues
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,14 +18,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.grocerydelivery.ui.home.CategoryFruitsFragment as CategoryFruitsFragment
 
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //setActivityTitle("Categories")
         val notificationsViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -40,67 +39,57 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         binding.fruits.setOnClickListener{
-            categories_fruits()
+            categoriesFruits()
         }
         binding.vegetables.setOnClickListener{
-            categories_vegetables()
+            categoriesVegetables()
         }
         binding.dairy.setOnClickListener {
-            categories_dairy()
+            categoriesDairy()
         }
         binding.breads.setOnClickListener {
-            categories_breads()
+            categoriesBreads()
         }
         binding.cleaning.setOnClickListener {
-            categories_cleaning()
+            categoriesCleaning()
         }
         binding.cosmetics.setOnClickListener {
-            categories_cosmetics()
+            categoriesCosmetics()
         }
 
-
-        /*
-        binding.buttonLogin.setOnClickListener{
-            Log.d(ContentValues.TAG,"Login Button Clicked")
-            val action=HomeFragmentDirections.actionNavigationHomeToLoginActivity()
-            findNavController().navigate(action) }
-        binding.buttonSignUp.setOnClickListener{
-            Log.d(ContentValues.TAG,"Sign up Button Clicked")
-            val action1=HomeFragmentDirections.actionNavigationHomeToRegisterActivity()
-            findNavController().navigate(action1)}*/
 
 
         return root
     }
 
 
-    private fun categories_cosmetics() {
+    private fun categoriesCosmetics() {
         TODO("Not yet implemented")
     }
 
-    private fun categories_cleaning() {
+    private fun categoriesCleaning() {
         TODO("Not yet implemented")
     }
 
-    private fun categories_breads() {
+    private fun categoriesBreads() {
         TODO("Not yet implemented")
     }
 
-    private fun categories_dairy() {
+    private fun categoriesDairy() {
         TODO("Not yet implemented")
     }
 
-    private fun categories_vegetables() {
+    private fun categoriesVegetables() {
         TODO("Not yet implemented")
     }
 
-    private fun categories_fruits() {
+    private fun categoriesFruits() {
+        //refreshFragment(context)
+
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryFruitsFragment()
         findNavController().navigate(action)
     }
-    /*private fun Fragment.setActivityTitle(t : String) {
-        (activity as AppCompatActivity?)?.supportActionBar?.title = t
-    }*/
+
 
     override fun onDestroyView() {
         super.onDestroyView()
