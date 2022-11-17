@@ -1,4 +1,4 @@
-package com.example.grocerydelivery
+package com.example.grocerydelivery.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseApp
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 

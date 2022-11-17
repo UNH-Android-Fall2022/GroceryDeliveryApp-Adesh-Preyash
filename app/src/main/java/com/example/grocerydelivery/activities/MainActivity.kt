@@ -1,25 +1,11 @@
-package com.example.grocerydelivery
+package com.example.grocerydelivery.activities
 
-import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.grocerydelivery.databinding.ActivityMainBinding
-import com.example.grocerydelivery.ui.home.CategoryFruitsData
-import com.example.grocerydelivery.ui.home.CategoryItemCard
-import com.example.grocerydelivery.ui.home.HomeFragmentDirections
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {

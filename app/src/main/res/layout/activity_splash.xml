@@ -5,7 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_screen"
-    tools:context=".SplashActivity"
+    tools:context=".activities.SplashActivity"
     >
+
+    <com.example.grocerydelivery.utils.TextViewBold
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/grocery_shopping"
+        android:textSize="@dimen/splash_title_text_size"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722">
+
+    </com.example.grocerydelivery.utils.TextViewBold>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

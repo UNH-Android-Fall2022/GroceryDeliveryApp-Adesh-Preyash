@@ -30,5 +30,6 @@
     <string name="welcome_to_grocery_shopping">Welcome to Grocery Shopping!</string>
     <string name="become_a_seller">Become a seller?</string>
     <string name="login">LOGIN</string>
+    <string name="grocery_shopping">Grocery Shopping</string>
 
 </resources>

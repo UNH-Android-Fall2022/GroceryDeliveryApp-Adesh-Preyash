@@ -1,14 +1,13 @@
-package com.example.grocerydelivery
+package com.example.grocerydelivery.activities
 
-import android.graphics.Insets.add
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.grocerydelivery.R
 import com.example.grocerydelivery.R.*
 import com.example.grocerydelivery.databinding.ActivitySuccessBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,20 +17,10 @@ class SuccessActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySuccessBinding
     private val TAG = "GroceryDeliveryAndroidDebug"
     private var mAuth: FirebaseAuth? = null
-    //var fragmentManager: FragmentManager? = null
-    //var fragment_sample: fragment_sample = fragment_sample()
-    //private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        /*
-        val firstFragment=HomeFragment()
-        val secondFragment=SearchFragment()
-        val thirdFragment=CartFragment()
-        val fourthFragment=ProfileFragment()
-         */
-        //mAuth = FirebaseAuth.getInstance()
 
         binding = ActivitySuccessBinding.inflate(layoutInflater)
         setContentView(binding.root)

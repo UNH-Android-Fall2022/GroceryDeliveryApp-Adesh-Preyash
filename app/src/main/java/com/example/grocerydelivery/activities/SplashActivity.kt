@@ -1,16 +1,21 @@
-package com.example.grocerydelivery
+package com.example.grocerydelivery.activities
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
-import android.view.WindowManager
+import com.example.grocerydelivery.R
+import com.example.grocerydelivery.databinding.ActivitySplashBinding
+
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_splash)
 
         @Suppress (  "DEPRECATION" )

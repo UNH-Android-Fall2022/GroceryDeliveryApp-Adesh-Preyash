@@ -55,16 +55,16 @@
         android:label="RegisterFormFragment" />
     <activity
         android:id="@+id/registerActivity"
-        android:name="com.example.grocerydelivery.RegisterActivity"
+        android:name="com.example.grocerydelivery.activities.RegisterActivity"
         android:label="RegisterActivity" />
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.example.grocerydelivery.LoginActivity"
+        android:name="com.example.grocerydelivery.activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.grocerydelivery.MainActivity"
+        android:name="com.example.grocerydelivery.activities.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
