@@ -8,11 +8,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 
-
-private var fruits_list:ArrayList<CategoryFruitsData>  = arrayListOf()
-private var mAuth: FirebaseAuth? = null
-//private val db = Firebase.firestore
-
 data class CategoryFruitsData(
 
 //    val id: String ="",
@@ -26,14 +21,7 @@ data class CategoryFruitsData(
 )
 
 
-var CategoryFruitsList: ArrayList<CategoryFruitsData> = arrayListOf(
 
-    CategoryFruitsData("Strawberry","Small","Red"),
-    CategoryFruitsData("Banana","Medium","Yellow"),
-    CategoryFruitsData("Grapes","Small","Black"),
-    CategoryFruitsData("Raspberries","Small","Maroon"),
-
-)
 
 
 

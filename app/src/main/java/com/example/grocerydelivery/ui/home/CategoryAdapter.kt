@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.R
 
 class CategoryAdapter(
     private val mExampleList: ArrayList<CategoryItemCard>,
-    private val context: CategoryFruitsFragment
+    private val context: Fragment
     ): RecyclerView.Adapter<CategoryAdapter.ExampleViewHolder>() {
 
     class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

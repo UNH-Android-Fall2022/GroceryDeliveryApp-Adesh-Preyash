@@ -1,20 +1,15 @@
 package com.example.grocerydelivery.ui.home
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentCategoryFruitsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -53,7 +48,7 @@ class CategoryFruitsFragment : Fragment() {
         val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
         Log.d("GroceryDeliverFirebaseAndroidDebug","Fetching Fruits from Firebase")
         firestoreDb = FirebaseFirestore.getInstance ()
-        val fruitsReference=firestoreDb.collection("fruits")
+        val fruitsReference=firestoreDb.collection("/product_category/fruits/fruits_list")
         fruitsReference.addSnapshotListener{snapshot,exception->
             if (exception != null || snapshot == null)
             {
@@ -63,7 +58,6 @@ class CategoryFruitsFragment : Fragment() {
 
             val fruitList=snapshot.toObjects<CategoryFruitsData>()
             Log.d("FRUIT_CATEGORY_DB_CALL", "DB CALL SUCCESS")
-            //val f=CategoryFruitsData("Plum","Small","Dark Red")
             for (fruit in fruitList)
             {
 
@@ -72,84 +66,23 @@ class CategoryFruitsFragment : Fragment() {
                         fruit.Name,fruit.Size,fruit.Color
                     )
                 )
-                Log.d("FRUIT_CATEGORY_DB_CALL", "refresh started")
-                var frg: Fragment? = null
-                frg = childFragmentManager.findFragmentById(R.id.fragment_fruits_list)
-                val ft: FragmentTransaction = childFragmentManager.beginTransaction()
-                frg?.let { ft.detach(it) }
-                frg?.let { ft.attach(it) }
-                ft.commit()
                 mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
-                Log.d("FRUIT_CATEGORY_DB_CALL", "refresh ended")
 
             }
 
-            //parentFragmentManager.beginTransaction().detach(this).attach(this).commit()
-            //childFragmentManager.beginTransaction().detach(this).attach(this).commit()
 
         }
-
-
-
-        /*db.collection("fruits")
-            .get()
-            .addOnSuccessListener { documents ->
-                fruits_list= mutableListOf()
-                for(document in documents){
-                    Log.d(TAG, "${document.id}=> ${document.data}")
-
-                    val fruit=document.toObject(CategoryFruitsData::class.java)
-                    //Log.d(TAG, fruit.id)
-                    fruits_list.add(CategoryFruitsData(fruit.Name,fruit.Size,fruit.Size))
-                    Log.d("Fruit db check",fruit.Name)
-                    Log.d("Fruit db check",fruit.Size)
-                    Log.d("Fruit db check",fruit.Color)
-
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents", exception)
-            }*/
-
-        for(categoryItem in CategoryFruitsList){
-            Log.d("FRUIT_CATEGORY_DB_CALL", "Adding hardcoded stuff to recycler list")
-            categoryRecyclerList.add(
-                CategoryItemCard(
-                    categoryItem.Name,
-                    categoryItem.Size,
-                    categoryItem.Color
-                )
-            )
-        }
-
         mRecyclerView= binding.recylerViewCategoryFruits
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
 
-
         return root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    public fun refreshFragment (context: Context?) {
-        context?.let {
-            val fragmentManager = (context as? AppCompatActivity)?.supportFragmentManager
-            fragmentManager?.let {
-                val currentFragment =
-                    fragmentManager.findFragmentById(R.id.recyler_view_category_fruits)
-                currentFragment?.let {
-                    val fragmentTransaction = fragmentManager.beginTransaction()
-                    fragmentTransaction.detach(it)
-                    fragmentTransaction.attach(it)
-                    fragmentTransaction.commit()
-                }
-            }
-        }
 
-    }
 }

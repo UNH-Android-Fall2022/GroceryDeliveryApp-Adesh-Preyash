@@ -80,7 +80,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun categoriesVegetables() {
-        TODO("Not yet implemented")
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryVegetablesFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesFruits() {

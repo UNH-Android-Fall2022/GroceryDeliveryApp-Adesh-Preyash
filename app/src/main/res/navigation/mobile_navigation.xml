@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_navigation_home_to_categoryFruitsFragment"
             app:destination="@id/categoryFruitsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryVegetablesFragment"
+            app:destination="@id/categoryVegetablesFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -69,4 +72,9 @@
         android:name="com.example.grocerydelivery.ui.home.CategoryFruitsFragment"
         android:label="fragment_category_fruits"
         tools:layout="@layout/fragment_category_fruits" />
+    <fragment
+        android:id="@+id/categoryVegetablesFragment"
+        android:name="com.example.grocerydelivery.ui.home.CategoryVegetablesFragment"
+        android:label="fragment_category_vegetables"
+        tools:layout="@layout/fragment_category_vegetables" />
 </navigation>
