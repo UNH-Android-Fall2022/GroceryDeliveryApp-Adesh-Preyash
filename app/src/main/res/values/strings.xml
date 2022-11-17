@@ -26,5 +26,9 @@
 
     <string name="safety_net_API_KEY">"AIzaSyD5b2-ffi1e5-TQNAwNQu4N5xOV9CFeRvc"</string>
     <string name="logout">Logout</string>
+    <string name="sign_up_btn">SIGN UP</string>
+    <string name="welcome_to_grocery_shopping">Welcome to Grocery Shopping!</string>
+    <string name="become_a_seller">Become a seller?</string>
+    <string name="login">LOGIN</string>
 
 </resources>

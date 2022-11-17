@@ -33,7 +33,11 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.grocerydelivery.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_navigation_profile_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.grocerydelivery.ui.search.SearchFragment"

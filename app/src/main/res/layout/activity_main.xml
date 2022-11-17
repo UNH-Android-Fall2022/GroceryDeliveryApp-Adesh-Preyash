@@ -23,11 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="96dp"
-        android:text="SIGN UP"
+        android:text="@string/sign_up_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin"
         app:layout_constraintTop_toBottomOf="@+id/txtGreeting"
         app:layout_constraintVertical_bias="0.097" />
 
@@ -35,9 +34,9 @@
         android:id="@+id/txtGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Grocery Shopping!"
+        android:text="@string/welcome_to_grocery_shopping"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -51,12 +50,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="220dp"
         android:linksClickable="false"
-        android:text="Become a seller?"
-        android:textSize="20dp"
+        android:text="@string/become_a_seller"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintVertical_bias="0.092" />
 
     <Button
@@ -64,37 +62,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:text="LOGIN"
+        android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonSignUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtGreeting"
         app:layout_constraintVertical_bias="0.097" />
-
-    <!--
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
-
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation"/>
-
-        -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

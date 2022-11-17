@@ -5,10 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentProfileBinding
+import com.example.grocerydelivery.ui.home.HomeFragmentDirections
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -16,10 +21,9 @@ import com.google.firebase.ktx.Firebase
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
+    private val TAG="GroceryAndroidDebug"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,19 +55,27 @@ class ProfileFragment : Fragment() {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             val uid = user.uid
+
+            auth=Firebase.auth
+
+            binding.buttonLogout.setOnClickListener{
+                Firebase.auth.signOut()
+                val action= ProfileFragmentDirections.actionNavigationProfileToMainActivity()
+                findNavController().navigate(action)
+            }
+
         }
 
-
-
-        //val textView: TextView = binding.textNotifications
-        //notificationsViewModel.text.observe(viewLifecycleOwner) {
-          //  textView.text = it
-        //}
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun performLogout()
+    {
+
     }
 }
