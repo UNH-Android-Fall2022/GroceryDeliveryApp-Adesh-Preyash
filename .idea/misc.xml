@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/activity_login.xml" value="0.1875" />
+        <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/activity_main.xml" value="0.17979610750695088" />
         <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/cart_item.xml" value="0.10400000000000001" />
+        <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Preyash Patel/AndroidStudioProjects/GroceryDeliveryApp/app/src/main/res/layout/search_bar.xml" value="0.176" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.2566137566137566" />
         <entry key="app/src/main/res/layout-w936dp/fragment_register_user.xml" value="0.33616943359375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2857391357421875" />
