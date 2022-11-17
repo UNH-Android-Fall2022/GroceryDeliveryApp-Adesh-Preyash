@@ -8,7 +8,7 @@
     tools:context=".activities.SplashActivity"
     >
 
-    <com.example.grocerydelivery.utils.TextViewBold
+    <com.example.grocerydelivery.utils.GSTextViewBold
         android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,6 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.722">
 
-    </com.example.grocerydelivery.utils.TextViewBold>
+    </com.example.grocerydelivery.utils.GSTextViewBold>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

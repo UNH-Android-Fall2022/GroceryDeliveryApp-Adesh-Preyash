@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.16007194244604317" />
+        <entry key="app/src/main/res/drawable/button_background.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/ic_fruits.xml" value="0.2265" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.2566137566137566" />
         <entry key="app/src/main/res/layout-w936dp/fragment_register_user.xml" value="0.33616943359375" />
