@@ -9,7 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,9 @@ import com.example.grocerydelivery.databinding.FragmentCategoryFruitsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
+
 
 class CategoryFruitsFragment : Fragment() {
 
@@ -36,7 +39,7 @@ class CategoryFruitsFragment : Fragment() {
     private var mAuth: FirebaseAuth? = null
     private val db = Firebase.firestore
     private lateinit var firestoreDb: FirebaseFirestore
-    private var fruits_list:ArrayList<CategoryFruitsData> = arrayListOf()
+    //private var fruits_list:ArrayList<CategoryFruitsData> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +51,7 @@ class CategoryFruitsFragment : Fragment() {
         _binding = FragmentCategoryFruitsBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
-
-
-
         Log.d("GroceryDeliverFirebaseAndroidDebug","Fetching Fruits from Firebase")
-
-
         firestoreDb = FirebaseFirestore.getInstance ()
         val fruitsReference=firestoreDb.collection("fruits")
         fruitsReference.addSnapshotListener{snapshot,exception->
@@ -63,20 +61,26 @@ class CategoryFruitsFragment : Fragment() {
             return@addSnapshotListener
         }
 
-            val fruitList=snapshot.toObjects(CategoryFruitsData::class.java)
+            val fruitList=snapshot.toObjects<CategoryFruitsData>()
+            Log.d("FRUIT_CATEGORY_DB_CALL", "DB CALL SUCCESS")
+            //val f=CategoryFruitsData("Plum","Small","Dark Red")
             for (fruit in fruitList)
             {
-                Log.d("Snapshot call", fruit.toString())
-                Log.d("Snapshot call", fruit.Name)
-                Log.d("Snapshot call", fruit.Color)
-                Log.d("Snapshot call", fruit.Size)
+
                 categoryRecyclerList.add(
                     CategoryItemCard(
-                        "Potato",
-                        "Large",
-                        "Brown"
+                        fruit.Name,fruit.Size,fruit.Color
                     )
                 )
+                Log.d("FRUIT_CATEGORY_DB_CALL", "refresh started")
+                var frg: Fragment? = null
+                frg = childFragmentManager.findFragmentById(R.id.fragment_fruits_list)
+                val ft: FragmentTransaction = childFragmentManager.beginTransaction()
+                frg?.let { ft.detach(it) }
+                frg?.let { ft.attach(it) }
+                ft.commit()
+                mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
+                Log.d("FRUIT_CATEGORY_DB_CALL", "refresh ended")
 
             }
 
@@ -84,6 +88,7 @@ class CategoryFruitsFragment : Fragment() {
             //childFragmentManager.beginTransaction().detach(this).attach(this).commit()
 
         }
+
 
 
         /*db.collection("fruits")
@@ -106,14 +111,8 @@ class CategoryFruitsFragment : Fragment() {
                 Log.w(TAG, "Error getting documents", exception)
             }*/
 
-
-
-
         for(categoryItem in CategoryFruitsList){
-            Log.d("Category Fruits List : Fruit db check", categoryItem.toString())
-            Log.d("Category Fruits List : Fruit db check",categoryItem.Name)
-            Log.d("Category Fruits List : Fruit db check",categoryItem.Size)
-            Log.d("Category Fruits List : Fruit db check",categoryItem.Color)
+            Log.d("FRUIT_CATEGORY_DB_CALL", "Adding hardcoded stuff to recycler list")
             categoryRecyclerList.add(
                 CategoryItemCard(
                     categoryItem.Name,
@@ -123,12 +122,11 @@ class CategoryFruitsFragment : Fragment() {
             )
         }
 
-
-
         mRecyclerView= binding.recylerViewCategoryFruits
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
+
 
         return root
     }

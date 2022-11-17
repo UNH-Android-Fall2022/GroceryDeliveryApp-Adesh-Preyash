@@ -32,31 +32,8 @@ var CategoryFruitsList: ArrayList<CategoryFruitsData> = arrayListOf(
     CategoryFruitsData("Banana","Medium","Yellow"),
     CategoryFruitsData("Grapes","Small","Black"),
     CategoryFruitsData("Raspberries","Small","Maroon"),
-    CategoryFruitsData("Plum","Small","Dark Red"),
-    //CategoryFruitsData(fruits_list[1].Name, fruits_list[1].Size, fruits_list[1].Color)
+
 )
-/*fun getFruitsFromDb()
-{
-    db.collection("fruits")
-        .get()
-        .addOnSuccessListener { documents ->
-            fruits_list= ArrayList()
-            for(document in documents){
-                Log.d(ContentValues.TAG, "${document.id}=> ${document.data}")
-
-                val fruit=document.toObject(CategoryFruitsData::class.java)
-                //Log.d(TAG, fruit.id)
-                fruits_list.add(fruit)
-                Log.d("Fruit db check",fruit.Name)
-                Log.d("Fruit db check",fruit.Size)
-                Log.d("Fruit db check",fruit.Color)
 
 
-            }
-        }
-        .addOnFailureListener { exception ->
-            Log.w(ContentValues.TAG, "Error getting documents", exception)
-        }
 
-
-}*/

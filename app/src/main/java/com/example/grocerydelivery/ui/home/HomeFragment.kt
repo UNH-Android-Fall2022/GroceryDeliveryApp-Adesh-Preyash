@@ -84,7 +84,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun categoriesFruits() {
-        //refreshFragment(context)
 
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryFruitsFragment()
         findNavController().navigate(action)

@@ -12,13 +12,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.grocerydelivery.databinding.ActivityMainBinding
+import com.example.grocerydelivery.ui.home.CategoryFruitsData
+import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.example.grocerydelivery.ui.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,12 +28,12 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "GroceryDeliveryAndroidDebug"
     private var mAuth: FirebaseAuth? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.buttonLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -42,10 +43,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
-
     }
-
-
 }
 
