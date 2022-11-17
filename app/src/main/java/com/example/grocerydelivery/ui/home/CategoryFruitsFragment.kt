@@ -1,15 +1,19 @@
 package com.example.grocerydelivery.ui.home
 
 import android.content.ContentValues.TAG
-import androidx.lifecycle.ViewModelProvider
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentCategoryFruitsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -73,7 +77,12 @@ class CategoryFruitsFragment : Fragment() {
                         "Brown"
                     )
                 )
+
             }
+
+            //parentFragmentManager.beginTransaction().detach(this).attach(this).commit()
+            //childFragmentManager.beginTransaction().detach(this).attach(this).commit()
+
         }
 
 
@@ -114,16 +123,7 @@ class CategoryFruitsFragment : Fragment() {
             )
         }
 
-        /*for (fruit in fruits_list)
-        {
-            categoryRecyclerList.add(
-                CategoryItemCard(
-                    fruit.Name,
-                    fruit.Size,
-                    fruit.Color
-                )
-            )
-        }*/
+
 
         mRecyclerView= binding.recylerViewCategoryFruits
         mRecyclerView.setHasFixedSize(true)
@@ -133,16 +133,25 @@ class CategoryFruitsFragment : Fragment() {
         return root
     }
 
-    /*override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CategoryFruitsViewModel::class.java)
-        // TODO: Use the ViewModel
 
-
-    }*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    public fun refreshFragment (context: Context?) {
+        context?.let {
+            val fragmentManager = (context as? AppCompatActivity)?.supportFragmentManager
+            fragmentManager?.let {
+                val currentFragment =
+                    fragmentManager.findFragmentById(R.id.recyler_view_category_fruits)
+                currentFragment?.let {
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.detach(it)
+                    fragmentTransaction.attach(it)
+                    fragmentTransaction.commit()
+                }
+            }
+        }
 
+    }
 }
