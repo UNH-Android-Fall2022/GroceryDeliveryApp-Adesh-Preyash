@@ -18,7 +18,7 @@
             android:contentDescription="Image of list item"
             android:src="@drawable/ic_apple"/>
 
-        <TextView
+        <com.example.grocerydelivery.utils.GSTextViewBold
             android:id="@+id/text_view_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,24 +27,38 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold"/>
-        <TextView
+        <com.example.grocerydelivery.utils.GSTextView
             android:id="@+id/text_view_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_view_1"
-            android:text="Description"
+            android:text="Size"
             android:layout_toEndOf="@id/image_view"/>
+        <com.example.grocerydelivery.utils.GSTextView
+            android:id="@+id/text_view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_2"
+            android:text="Color"
+            android:layout_toEndOf="@id/image_view"/>
+        <com.example.grocerydelivery.utils.GSTextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/add_to_cart"
+            android:text="Cost"
+            android:layout_alignParentEnd="true"/>
 
-        <Button
+        <com.example.grocerydelivery.utils.GSButton
+            android:id="@+id/add_to_cart"
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
             android:layout_alignBottom="@id/image_view"
+            android:layout_alignParentEnd="true"
             android:text="Add to cart"
             android:textColor="@color/white"
-            android:theme="@style/Button.Purple"/>
-
-
+            android:theme="@style/Button.Purple" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

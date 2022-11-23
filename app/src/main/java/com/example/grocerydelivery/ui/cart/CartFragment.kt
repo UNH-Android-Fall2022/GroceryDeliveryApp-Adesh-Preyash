@@ -1,5 +1,6 @@
 package com.example.grocerydelivery.ui.cart
 
+import android.os.Binder
 import com.example.grocerydelivery.ui.cart.CartViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +15,14 @@ import com.example.grocerydelivery.databinding.FragmentCartBinding
 
 class CartFragment : Fragment() {
 
+    companion object{
+        val cartRecyclerList: ArrayList<CartCard> = ArrayList()
+        var cartSum : Double = 0.0
+        var shipping : Double=0.0
+        var taxes: Double=0.0
+
+    }
+
     private var _binding: FragmentCartBinding? = null
 
     // This property is only valid between onCreateView and
@@ -21,6 +30,7 @@ class CartFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var mRecyclerView : RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,29 +42,33 @@ class CartFragment : Fragment() {
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
+//        for(cartItem in cartList){
+//            cartRecyclerList.add(
+//                CartCard(
+//                    cartItem.image,
+//                    cartItem.name,
+//                    cartItem.quantity.toString()+"Units"
+//                )
+//            )
+//        }
 
-        //val textView: TextView = binding.textNotifications
-        //notificationsViewModel.text.observe(viewLifecycleOwner) {
-        //  textView.text = it
-        //}
-
-
-        val cartRecyclerList: ArrayList<CartCard> = ArrayList()
-
-        for(cartItem in cartList){
-            cartRecyclerList.add(
-                CartCard(
-                    cartItem.image,
-                    cartItem.name,
-                    cartItem.quantity.toString()+"Units"
-                )
-            )
-        }
-
-        mRecyclerView= binding.recylerViewWorkouts
+        mRecyclerView= binding.recylerViewCart
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CartAdapter(cartRecyclerList, this)
+
+        val mCartTotal=binding.cartTotalAmount
+        mCartTotal.text= cartSum.toString()
+
+        val mShippingCost=binding.shippingCost
+        mShippingCost.text= shipping.toString()
+
+        val mTaxes=binding.taxesAmount
+        mTaxes.text= taxes.toString()
+
+        val mTotalAmount=binding.totalAmount
+        val total = cartSum+ shipping+taxes
+        mTotalAmount.text= total.toString()
 
         return root
     }

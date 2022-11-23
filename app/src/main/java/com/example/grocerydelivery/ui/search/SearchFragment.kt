@@ -1,5 +1,6 @@
 package com.example.grocerydelivery.ui.search
 
+import android.R
 import android.content.ContentValues.TAG
 import com.example.grocerydelivery.ui.search.SearchViewModel
 import android.os.Bundle
@@ -7,14 +8,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.databinding.FragmentSearchBinding
+import com.example.grocerydelivery.ui.cart.CartAdapter
+import com.example.grocerydelivery.ui.cart.CartFragment
+import com.example.grocerydelivery.ui.home.CategoryAdapter
+import com.example.grocerydelivery.ui.home.CategoryFruitsFragment.Companion.allItemsList
+import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class SearchFragment : Fragment() {
+
 
     private var _binding: FragmentSearchBinding? = null
 
@@ -22,9 +34,9 @@ class SearchFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val db = Firebase.firestore
 
-    //private var samples:MutableList<Sample> = arrayListOf()
+    private lateinit var mRecyclerView : RecyclerView
+
     private val TAG="GroceryAndroidDebug"
 
 
@@ -38,29 +50,58 @@ class SearchFragment : Fragment() {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val SearchRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
 
-        //val textView: TextView = binding.textNotifications
-        //notificationsViewModel.text.observe(viewLifecycleOwner) {
-        //  textView.text = it
-        //}
-        /*
-        db.collection("sample").get().addOnSuccessListener { documents ->
-            samples = mutableListOf()
-            for (document in documents) {
-                Log.d("GROCERY db data", "${document.id}=> ${document.data}")
-                val sample = document.toObject(Sample::class.java)
-                binding.textSearch.text= sample.info
-                Log.d("GROCERY text output", sample.info)
-                samples.add(sample)
-            }
-        }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents", exception)
-                Log.d("GROCERY", "Error getting documents", exception)
-            }
+        val searchView=binding.searchView
+        val listAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_list_item_1,
+            programmingLanguagesList
+        )
 
-         */
-        //binding.textSearch.text= samples[0].toString()
+
+
+        // on below line we are adding on query
+        // listener for our search view.
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // on below line we are checking
+                // if query exist or not.
+                for (item in allItemsList)
+                {
+                    if (item.Name.contains(query.toString()))
+                    {
+                        SearchRecyclerList.add(item)
+                        mRecyclerView.adapter= CategoryAdapter(SearchRecyclerList, this@SearchFragment)
+                    }
+
+                }
+
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                for (item in allItemsList)
+                {
+                    if (item.Name.contains(newText.toString()))
+                    {
+                        SearchRecyclerList.add(item)
+                        mRecyclerView.adapter= CategoryAdapter(SearchRecyclerList, this@SearchFragment)
+                    }
+
+                }
+                // if query text is change in that case we
+                // are filtering our adapter with
+                // new text on below line.
+                //listAdapter.filter.filter(newText)
+
+                return false
+            }
+        })
+
+        mRecyclerView= binding.recylerViewSearch
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.adapter= CategoryAdapter(SearchRecyclerList, this)
         return root
     }
 

@@ -8,15 +8,128 @@
     tools:ignore="ExtraText">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyler_view_workouts"
-        android:layout_width="405dp"
-        android:layout_height="639dp"
+        android:id="@+id/recyler_view_cart"
+        android:layout_width="410dp"
+        android:layout_height="459dp"
         android:clipToPadding="false"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/cart_item" />
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/recycler_total"
+        app:layout_constraintTop_toBottomOf="@id/recyler_view_cart"
+        >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TableRow>
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:width="270dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:text="CART TOTAL" />
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/cart_total_amount"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </TableRow>
+
+        <TableRow>
+
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/textView4"
+                android:width="320dp"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SHIPPING COST" />
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/shipping_cost"
+                android:width="75dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </TableRow>
+
+        <TableRow>
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/textView6"
+                android:width="320dp"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TAXES" />
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/taxes_amount"
+                android:width="75dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </TableRow>
+
+        <TableRow>
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/textView9"
+                android:width="320dp"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOTAL" />
+
+            <com.example.grocerydelivery.utils.GSTextViewBold
+                android:id="@+id/total_amount"
+                android:width="75dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </TableRow>
+
+    </TableLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.example.grocerydelivery.utils.GSButton
+        android:id="@+id/GSButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/btn_padding"
+        android:paddingBottom="@dimen/btn_padding"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/btn_textSize"
+        android:text="CHECKOUT"
+        app:layout_constraintTop_toBottomOf="@id/recycler_total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

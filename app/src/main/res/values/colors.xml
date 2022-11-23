@@ -11,6 +11,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#036B2A</color>
     <color name="colorPrimaryDark">#036B2A</color>
-    <color name="colorAccent">#FFFF00</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#414141</color>
+    <color name="colorAccent">#000000</color>
     <color name="yellow">#FFFF00</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

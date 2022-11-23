@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.R
+import com.squareup.picasso.Picasso
 
 class CartAdapter (
 
@@ -20,6 +21,8 @@ class CartAdapter (
             val mImageView: ImageView = itemView.findViewById (R.id.image_view)
             val mTextView1: TextView = itemView.findViewById (R.id.text_view_1)
             val mTextView2: TextView = itemView.findViewById (R.id.text_view_2)
+            val mTextView3: TextView = itemView.findViewById (R.id.text_view_3)
+            val mTextView4: TextView = itemView.findViewById (R.id.price)
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
         val itemView =
@@ -28,10 +31,22 @@ class CartAdapter (
         return ExampleViewHolder(itemView)
     }
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
-        val (imageResource, text1, text2) = mExampleList[position]
+        val (ImageSrc, Name, Size, Color, Price) = mExampleList[position]
         //TODO ("Implement Image Resource")
-        holder.mTextView1.text = text1
-        holder.mTextView2.text = text2
+
+        if(ImageSrc!="")
+        {
+            Picasso.get().load(ImageSrc).into(holder.mImageView);
+        }
+
+        //TODO ("Implement Image Resource")
+        holder.mTextView1.text = Name
+        holder.mTextView2.text = Size
+        holder.mTextView3.text=Color
+        holder.mTextView4.text= Price.toString()
+        holder.itemView.setOnClickListener {
+            Log.d(TAG, "Position clicked is $position")
+        }
 
         holder.itemView.setOnClickListener {
             Log.d(TAG, "Position clicked is $position")

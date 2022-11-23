@@ -22,6 +22,8 @@ class CategoryFruitsFragment : Fragment() {
 
     companion object {
         fun newInstance() = CategoryFruitsFragment()
+        var allItemsList: ArrayList<CategoryItemCard> = ArrayList()
+
     }
     private var _binding: FragmentCategoryFruitsBinding? = null
 
@@ -63,7 +65,12 @@ class CategoryFruitsFragment : Fragment() {
 
                 categoryRecyclerList.add(
                     CategoryItemCard(
-                        fruit.Name,fruit.Size,fruit.Color
+                        fruit.imageSrc,fruit.Name,fruit.Size,fruit.Color,fruit.Price
+                    )
+                )
+                allItemsList.add(
+                    CategoryItemCard(
+                        fruit.imageSrc,fruit.Name,fruit.Size,fruit.Color,fruit.Price
                     )
                 )
                 mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)

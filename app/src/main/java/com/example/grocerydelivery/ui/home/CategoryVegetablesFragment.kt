@@ -62,7 +62,12 @@ class CategoryVegetablesFragment : Fragment() {
 
                 categoryRecyclerList.add(
                     CategoryItemCard(
-                        item.Name,item.Size,item.Color
+                        item.imageSrc,item.Name,item.Size,item.Color,item.Price
+                    )
+                )
+                CategoryFruitsFragment.allItemsList.add(
+                    CategoryItemCard(
+                        item.imageSrc,item.Name,item.Size,item.Color,item.Price
                     )
                 )
                 mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)

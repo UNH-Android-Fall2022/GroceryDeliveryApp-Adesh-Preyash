@@ -2,24 +2,14 @@ package com.example.grocerydelivery.ui.cart
 
 data class CartData (
 
-    val id: String ="",
-    var quantity: Int=2,
+    //val id: String ="",
+    //var quantity: Int=2,
     var image: String="",
     var name: String="",
-    var productId: Int=0,
-    var description: String=""
+    var size: String="",
+    var color: String=""
 
 )
-
-val cartList: ArrayList<CartData> = arrayListOf(
-    CartData("",1,"","Fruit 1",1,""),
-    CartData("",2,"","Vegetable 1",1,""),
-    CartData("",3,"","Cereals",1,""),
-    CartData("",1,"","Fruit 1",1,""),
-    CartData("",1,"","Fruit 1",1,""),
-    CartData("",1,"","Fruit 1",1,"")
-)
-
 
 /*
 

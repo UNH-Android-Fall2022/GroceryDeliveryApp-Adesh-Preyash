@@ -4,10 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowInsets
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.grocerydelivery.R
+import com.example.grocerydelivery.utils.GSTextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -21,12 +23,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         auth=Firebase.auth
 
-        val loginButton : Button = findViewById(R.id.button1)
+        val loginButton : Button = findViewById(R.id.btn_login)
 
         loginButton.setOnClickListener{
             performLogin()
+        }
+        val register: GSTextView= findViewById(R.id.tv_dont_have_an_account)
+        register.setOnClickListener{
+            val intent= Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -41,6 +49,8 @@ class LoginActivity : AppCompatActivity() {
         {
             Toast.makeText(baseContext, "Please fill all fields",
                 Toast.LENGTH_SHORT).show()
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         val password=inputPassword.text.toString()
