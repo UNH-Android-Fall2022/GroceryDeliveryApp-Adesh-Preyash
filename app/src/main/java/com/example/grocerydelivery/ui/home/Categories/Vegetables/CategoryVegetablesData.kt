@@ -1,4 +1,4 @@
-package com.example.grocerydelivery.ui.home
+package com.example.grocerydelivery.ui.home.Categories.Vegetables
 
 data class CategoryVegetablesData (
     var imageSrc: String="",

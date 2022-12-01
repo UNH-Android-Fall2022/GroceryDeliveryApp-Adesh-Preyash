@@ -87,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
     {
         val inputPassword=findViewById<EditText>(R.id.password_input)
         val inputUsername=findViewById<EditText>(R.id.username_input)
-        val inputPhone=findViewById<EditText>(R.id.phoneNumber)
+        //val inputPhone=findViewById<EditText>(R.id.phoneNumber)
 
         if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() )
         {
@@ -97,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
 
         val password=inputPassword.text.toString()
         val username=inputUsername.text.toString()
-        val phone=inputPhone.text.toString()
+        //val phone=inputPhone.text.toString()
 
         auth.createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener(this) { task ->

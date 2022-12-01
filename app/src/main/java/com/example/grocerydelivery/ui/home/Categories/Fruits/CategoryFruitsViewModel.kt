@@ -1,4 +1,4 @@
-package com.example.grocerydelivery.ui.home
+package com.example.grocerydelivery.ui.home.Categories.Fruits
 
 import androidx.lifecycle.ViewModel
 

@@ -32,6 +32,18 @@
         <action
             android:id="@+id/action_navigation_home_to_categoryVegetablesFragment"
             app:destination="@id/categoryVegetablesFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryBreadsFragment"
+            app:destination="@id/categoryBreadsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryCleaningFragment"
+            app:destination="@id/categoryCleaningFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryCosmeticsFragment"
+            app:destination="@id/categoryCosmeticsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_categoryDairyFragment"
+            app:destination="@id/categoryDairyFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile"
@@ -69,12 +81,32 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/categoryFruitsFragment"
-        android:name="com.example.grocerydelivery.ui.home.CategoryFruitsFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment"
         android:label="fragment_category_fruits"
         tools:layout="@layout/fragment_category_fruits" />
     <fragment
         android:id="@+id/categoryVegetablesFragment"
-        android:name="com.example.grocerydelivery.ui.home.CategoryVegetablesFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Vegetables.CategoryVegetablesFragment"
         android:label="fragment_category_vegetables"
         tools:layout="@layout/fragment_category_vegetables" />
+    <fragment
+        android:id="@+id/categoryBreadsFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Breads.CategoryBreadsFragment"
+        android:label="fragment_catgeory_breads"
+        tools:layout="@layout/fragment_catgeory_breads" />
+    <fragment
+        android:id="@+id/categoryCleaningFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Cleaning.CategoryCleaningFragment"
+        android:label="fragment_category_cleaning"
+        tools:layout="@layout/fragment_category_cleaning" />
+    <fragment
+        android:id="@+id/categoryCosmeticsFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Cosmetics.CategoryCosmeticsFragment"
+        android:label="fragment_category_cosmetics"
+        tools:layout="@layout/fragment_category_cosmetics" />
+    <fragment
+        android:id="@+id/categoryDairyFragment"
+        android:name="com.example.grocerydelivery.ui.home.Categories.Dairy.CategoryDairyFragment"
+        android:label="fragment_category_dairy"
+        tools:layout="@layout/fragment_category_dairy" />
 </navigation>

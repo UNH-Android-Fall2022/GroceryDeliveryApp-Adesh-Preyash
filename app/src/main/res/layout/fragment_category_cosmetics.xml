@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.Categories.Fruits.CategoryFruitsFragment"
+    tools:context=".ui.home.Categories.Cosmetics.CategoryCosmeticsFragment"
     tools:ignore="ExtraText">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyler_view_category_fruits"
+        android:id="@+id/recyler_view_category_cosmetics"
         android:layout_width="405dp"
         android:layout_height="639dp"
         android:clipToPadding="false"

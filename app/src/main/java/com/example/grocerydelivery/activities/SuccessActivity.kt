@@ -14,6 +14,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class SuccessActivity : AppCompatActivity() {
+
+    companion object{
+
+    }
     private lateinit var binding: ActivitySuccessBinding
     private val TAG = "GroceryDeliveryAndroidDebug"
     private var mAuth: FirebaseAuth? = null

@@ -60,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_input"
         tools:ignore="MissingConstraints" />
-
+<!--
     <com.example.grocerydelivery.utils.GSEditText
         android:id="@+id/phoneNumber"
         android:layout_width="258dp"
@@ -105,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sendOtp"
         app:layout_constraintVertical_bias="0.457"
         tools:ignore="MissingConstraints" />
+        -->
 
     <com.example.grocerydelivery.utils.GSButton
         android:id="@+id/buttonSignup1"

@@ -11,8 +11,12 @@
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="60dp"
+        android:queryHint="Search for products"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="16dp"/>
 
+    <!--
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyler_view_search"
         android:layout_width="408dp"
@@ -24,5 +28,17 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/category_item" />
+    -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="408dp"
+        android:id="@+id/recycler_view_search"
+        android:layout_height="591dp"
+        tools:listitem="@layout/category_item"
+
+
+        app:layout_constraintTop_toBottomOf="@id/search_view"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

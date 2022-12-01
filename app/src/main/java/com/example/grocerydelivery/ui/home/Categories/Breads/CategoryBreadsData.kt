@@ -1,9 +1,7 @@
-package com.example.grocerydelivery.ui.home
+package com.example.grocerydelivery.ui.home.Categories.Breads
 
-
-data class CategoryFruitsData(
-
-//    val id: String ="",
+data class CategoryBreadsData (
+    //    val id: String ="",
 //    var quantity: Int=0,
     var imageSrc: String="",
     var Name: String="",
@@ -13,7 +11,6 @@ data class CategoryFruitsData(
 //    var productId: Int=0,
 //    var description: String=""
 )
-
 
 
 

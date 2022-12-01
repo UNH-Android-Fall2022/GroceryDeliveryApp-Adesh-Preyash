@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1515" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.2566137566137566" />
         <entry key="app/src/main/res/layout-w936dp/fragment_register_user.xml" value="0.33616943359375" />
+        <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.23867753623188406" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.11285266457680251" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2680984497070313" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.5011367797851562" />
@@ -25,8 +26,12 @@
         <entry key="app/src/main/res/layout/category_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/extra.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.13043478260869565" />
+        <entry key="app/src/main/res/layout/fragment_category_cleaning.xml" value="0.23867753623188406" />
+        <entry key="app/src/main/res/layout/fragment_category_cosmetics.xml" value="0.23867753623188406" />
+        <entry key="app/src/main/res/layout/fragment_category_dairy.xml" value="0.23867753623188406" />
         <entry key="app/src/main/res/layout/fragment_category_fruits.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_category_vegetables.xml" value="0.14792299898682879" />
+        <entry key="app/src/main/res/layout/fragment_catgeory_breads.xml" value="0.23867753623188406" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18890838623046877" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1421875" />
         <entry key="app/src/main/res/layout/fragment_login_user.xml" value="0.1910400390625" />

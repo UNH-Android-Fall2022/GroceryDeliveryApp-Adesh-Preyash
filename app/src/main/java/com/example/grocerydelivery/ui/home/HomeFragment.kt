@@ -18,7 +18,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.grocerydelivery.ui.home.CategoryFruitsFragment as CategoryFruitsFragment
 
 
 class HomeFragment : Fragment() {
@@ -64,19 +63,23 @@ class HomeFragment : Fragment() {
 
 
     private fun categoriesCosmetics() {
-        TODO("Not yet implemented")
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryCosmeticsFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesCleaning() {
-        TODO("Not yet implemented")
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryCleaningFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesBreads() {
-        TODO("Not yet implemented")
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryBreadsFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesDairy() {
-        TODO("Not yet implemented")
+        val action=HomeFragmentDirections.actionNavigationHomeToCategoryDairyFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesVegetables() {
