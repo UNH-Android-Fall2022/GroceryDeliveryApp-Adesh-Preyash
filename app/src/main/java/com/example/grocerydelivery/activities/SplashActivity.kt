@@ -7,6 +7,8 @@ import android.os.Handler
 import android.view.WindowInsets
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivitySplashBinding
+import com.example.grocerydelivery.ui.home.Categories.Breads.CategoryBreadsFragment
+import com.example.grocerydelivery.ui.home.HomeFragment
 
 
 class SplashActivity : AppCompatActivity() {
@@ -25,6 +27,8 @@ class SplashActivity : AppCompatActivity() {
         @Suppress (  "DEPRECATION" )
         Handler().postDelayed(
             {
+
+
                 // Launch the Main Activity
                     startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish() // Call this when your activity is done and should be closed.

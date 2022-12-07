@@ -5,6 +5,7 @@ package com.example.grocerydelivery.ui.home
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -47,7 +48,7 @@ class CategoryAdapter(
         if(ImageSrc!="")
         {
             //Citation : referred to https://square.github.io/picasso/
-            Picasso.get().load(ImageSrc).into(holder.mImageView);
+            Picasso.get().load(ImageSrc).resize(100,100).into(holder.mImageView);
         }
         holder.mTextView1.text = Name
         holder.mTextView2.text = Size
@@ -60,6 +61,7 @@ class CategoryAdapter(
 
             override fun onClick(v: View?) {
                 if (v != null) {
+                    v.setBackgroundColor(android.graphics.Color.parseColor("#808080"))
                     Toast.makeText(v.context,
                         "$Name  Added to cart",
                         Toast.LENGTH_SHORT

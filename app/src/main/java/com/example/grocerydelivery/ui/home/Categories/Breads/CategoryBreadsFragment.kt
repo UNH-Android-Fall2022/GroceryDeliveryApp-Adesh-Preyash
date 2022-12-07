@@ -1,6 +1,5 @@
 package com.example.grocerydelivery.ui.home.Categories.Breads
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.databinding.FragmentCatgeoryBreadsBinding
 import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment
-
 import com.example.grocerydelivery.ui.home.CategoryAdapter
 import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +20,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 
 
-class CategoryBreadsFragment : Fragment() {
+open class CategoryBreadsFragment : Fragment() {
 
     companion object {
         fun newInstance() = CategoryBreadsFragment()
@@ -30,17 +28,15 @@ class CategoryBreadsFragment : Fragment() {
 
     }
     private var _binding: FragmentCatgeoryBreadsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val TAG="GroceryAndroidDebug"
     private val binding get() = _binding!!
-
     private lateinit var mRecyclerView : RecyclerView
     private lateinit var viewModel: CategoryBreadsViewModel
     private var mAuth: FirebaseAuth? = null
     private val db = Firebase.firestore
     private lateinit var current_item: CategoryItemCard
     private lateinit var firestoreDb: FirebaseFirestore
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +47,15 @@ class CategoryBreadsFragment : Fragment() {
 
         _binding = FragmentCatgeoryBreadsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        dataLoad()
+
+        return root
+    }
+
+    fun dataLoad()
+    {
         val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
-        Log.d("GroceryDeliverFirebaseAndroidDebug","Fetching Breads from Firebase")
+        Log.d(TAG,"Fetching Breads from Firebase")
         firestoreDb = FirebaseFirestore.getInstance ()
         val Reference=firestoreDb.collection("/product_category/breads/breads_list")
         Reference.addSnapshotListener{snapshot,exception->
@@ -63,7 +66,7 @@ class CategoryBreadsFragment : Fragment() {
             }
 
             val itemList=snapshot.toObjects<CategoryBreadsData>()
-            Log.d("CATEGORY_DB_CALL", "DB CALL SUCCESS")
+            Log.d(TAG, "DB CALL SUCCESS")
             for (item in itemList)
             {
                 current_item= CategoryItemCard(
@@ -80,8 +83,6 @@ class CategoryBreadsFragment : Fragment() {
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
-
-        return root
     }
     override fun onDestroyView() {
         super.onDestroyView()

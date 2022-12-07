@@ -4,6 +4,7 @@ package com.example.grocerydelivery.ui.home
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,10 +23,10 @@ import com.example.grocerydelivery.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class HomeFragment : Fragment() {
+open class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
+    private val TAG="GroceryAndroidDebug"
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -58,14 +59,11 @@ class HomeFragment : Fragment() {
         binding.cosmetics.setOnClickListener {
             categoriesCosmetics()
         }
-
-
-
         return root
     }
 
 
-    private fun categoriesCosmetics() {
+    public fun categoriesCosmetics() {
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryCosmeticsFragment()
         findNavController().navigate(action)
     }
@@ -95,7 +93,6 @@ class HomeFragment : Fragment() {
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryFruitsFragment()
         findNavController().navigate(action)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
