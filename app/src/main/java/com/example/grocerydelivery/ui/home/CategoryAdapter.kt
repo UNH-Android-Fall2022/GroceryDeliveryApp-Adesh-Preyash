@@ -62,6 +62,7 @@ class CategoryAdapter(
             override fun onClick(v: View?) {
                 if (v != null) {
                     v.setBackgroundColor(android.graphics.Color.parseColor("#808080"))
+                    v.isEnabled=false
                     Toast.makeText(v.context,
                         "$Name  Added to cart",
                         Toast.LENGTH_SHORT

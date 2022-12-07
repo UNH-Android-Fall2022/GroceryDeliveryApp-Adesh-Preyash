@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         //Citation : https://firebase.google.com/docs/auth/android/start#check_current_auth_state
         auth=Firebase.auth
 

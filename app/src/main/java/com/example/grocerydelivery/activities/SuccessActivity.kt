@@ -3,6 +3,7 @@ package com.example.grocerydelivery.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -30,6 +31,7 @@ class SuccessActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         val navView: BottomNavigationView? = binding.bottomNavigationView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -37,6 +39,7 @@ class SuccessActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         //Referred to IceBreaker codebase
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 id.navigation_home, id.navigation_search, id.navigation_cart, id.navigation_profile
@@ -46,4 +49,8 @@ class SuccessActivity : AppCompatActivity() {
 
         navView?.setupWithNavController(navController)
     }
+    fun Fragment.setActivityTitle(title: String) {
+        (activity as AppCompatActivity?)?.supportActionBar?.title = title
+    }
+
 }

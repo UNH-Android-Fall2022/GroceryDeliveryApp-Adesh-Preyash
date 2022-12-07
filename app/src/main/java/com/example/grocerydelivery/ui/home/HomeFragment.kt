@@ -5,6 +5,7 @@ package com.example.grocerydelivery.ui.home
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ open class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val notificationsViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -62,6 +64,10 @@ open class HomeFragment : Fragment() {
         return root
     }
 
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        (activity as AppCompatActivity).setSupportActionBar(toolbar_name)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Home"
+//    }
 
     public fun categoriesCosmetics() {
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryCosmeticsFragment()
