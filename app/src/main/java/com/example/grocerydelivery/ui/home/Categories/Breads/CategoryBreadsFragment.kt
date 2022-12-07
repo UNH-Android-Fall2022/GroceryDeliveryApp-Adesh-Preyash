@@ -1,8 +1,11 @@
 package com.example.grocerydelivery.ui.home.Categories.Breads
 
+import android.R
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -84,6 +87,25 @@ open class CategoryBreadsFragment : Fragment() {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
     }
+    //Citation : https://stackoverflow.com/questions/40395067/android-back-button-not-working-in-fragment
+    override fun onCreate( savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //required for back button to work
+        setHasOptionsMenu(true)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.i(ContentValues.TAG, "Back Button Pressed")
+        when (item.getItemId()) {
+            R.id.home -> {
+                Log.i(ContentValues.TAG, "home on backpressed")
+                requireActivity().onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

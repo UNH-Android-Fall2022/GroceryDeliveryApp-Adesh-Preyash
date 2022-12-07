@@ -39,7 +39,6 @@ class SuccessActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
 
         //Referred to IceBreaker codebase
-
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 id.navigation_home, id.navigation_search, id.navigation_cart, id.navigation_profile
@@ -48,9 +47,6 @@ class SuccessActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView?.setupWithNavController(navController)
-    }
-    fun Fragment.setActivityTitle(title: String) {
-        (activity as AppCompatActivity?)?.supportActionBar?.title = title
     }
 
 }

@@ -64,10 +64,6 @@ open class HomeFragment : Fragment() {
         return root
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        (activity as AppCompatActivity).setSupportActionBar(toolbar_name)
-//        (activity as AppCompatActivity).supportActionBar?.title = "Home"
-//    }
 
     public fun categoriesCosmetics() {
         val action=HomeFragmentDirections.actionNavigationHomeToCategoryCosmeticsFragment()
