@@ -1,3 +1,5 @@
+
+
 package com.example.grocerydelivery.ui.home
 
 import android.content.ContentValues
@@ -37,6 +39,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        //Setting clickable image buttons as Category choice
         binding.fruits.setOnClickListener{
             categoriesFruits()
         }

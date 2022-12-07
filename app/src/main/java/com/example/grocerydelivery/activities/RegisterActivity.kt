@@ -19,7 +19,6 @@ import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
-    //private lateinit var binding: ActivityRegisterBinding
     private val db = Firebase.firestore
     private val TAG="GroceryAndroidDebug"
     private lateinit var auth: FirebaseAuth
@@ -27,9 +26,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var resendingToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private var _binding: ActivityRegisterBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
 
@@ -39,56 +35,24 @@ class RegisterActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         _binding = ActivityRegisterBinding.inflate(layoutInflater)
         val root: View = binding.root
+
+
         auth=Firebase.auth
         FirebaseApp.initializeApp(this)
-
-        /*val sendOtp : Button = findViewById(R.id.sendOtp)
-
-        sendOtp.setOnClickListener{
-            val inputPassword=findViewById<EditText>(R.id.password_input)
-            val inputUsername=findViewById<EditText>(R.id.username_input)
-            val inputPhone=findViewById<EditText>(R.id.phoneNumber)
-            val ph=inputPhone.text.toString()
-            if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() || inputPhone.text.isEmpty())
-            {
-                Toast.makeText(baseContext, "Please fill all fields",
-                    Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-            }
-            Log.d(TAG, "PHONE NUMBER PASSED ($ph)")
-            startPhoneNumberVerification(ph)
-            Toast.makeText(baseContext, "OTP sent",
-                Toast.LENGTH_SHORT).show()
-        }*/
 
         val signupButton : Button = findViewById(R.id.buttonSignup1)
 
         signupButton.setOnClickListener{
-            /*val inputOTP=findViewById<EditText>(R.id.OTP)
-            val otp=inputOTP.text.toString()
-            verifyPhoneNumberWithCode(storedVerificationId, otp)*/
             performSignup()
         }
-
-        /*callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                Log.d(TAG,"Phone number verification completed : $credential")
-            }
-            override fun onVerificationFailed(e: FirebaseException) {
-                Log.d(TAG,"Phone number verification failed", e)
-            }
-        }*/
     }
-
+    //Function to implement Firebase Auth to signup user after 'signup' button is clicked
     private fun performSignup()
     {
         val inputPassword=findViewById<EditText>(R.id.password_input)
         val inputUsername=findViewById<EditText>(R.id.username_input)
-        //val inputPhone=findViewById<EditText>(R.id.phoneNumber)
 
+        //if required fields are not provided, you cannot signup
         if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() )
         {
             Toast.makeText(baseContext, "Please fill all fields",
@@ -97,8 +61,8 @@ class RegisterActivity : AppCompatActivity() {
 
         val password=inputPassword.text.toString()
         val username=inputUsername.text.toString()
-        //val phone=inputPhone.text.toString()
 
+        //Citation: https://firebase.google.com/docs/auth/android/start#sign_up_new_users
         auth.createUserWithEmailAndPassword(username, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -128,48 +92,12 @@ class RegisterActivity : AppCompatActivity() {
     }
     public override fun onStart() {
         super.onStart()
+
+        // Citation : https://firebase.google.com/docs/auth/android/start#check_current_auth_state
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
             //reload()
         }
-    }
-    private fun startPhoneNumberVerification(phoneNumber: String) {
-// [START start_phone_auth]
-        val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, java.util.concurrent.TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this)                 // Activity (for callback binding)
-            .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-            .build()
-
-        PhoneAuthProvider.verifyPhoneNumber(options)
-    }
-    private fun verifyPhoneNumberWithCode (verificationId: String?, code: String) {
-        Log.d(TAG, "Reach 1")
-        val credential = PhoneAuthProvider.getCredential(verificationId!!, code)
-        Log.d(TAG, "Reach 1.5")
-
-        signInWithPhoneAuthCredential(credential)
-    }
-
-    private fun signInWithPhoneAuthCredential (credential: PhoneAuthCredential) {
-        Log.d(TAG, "Reach 2")
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "Reach 3")
-                    Log.d(TAG, "signInWithCredential:success")
-                    val user = task.result?.user
-                    Toast.makeText(this, "Welcome to the jungle :" + user, Toast.LENGTH_SHORT)
-                        .show()
-                    val intent= Intent(this, SuccessActivity::class.java)
-                    startActivity(intent)
-                } else {
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                    }
-                }
-            }
     }
 }

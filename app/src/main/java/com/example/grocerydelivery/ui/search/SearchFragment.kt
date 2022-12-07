@@ -21,9 +21,6 @@ class SearchFragment : Fragment() {
 
 
     private var _binding: FragmentSearchBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var SearchRecyclerList: ArrayList<CategoryItemCard>
     private lateinit var tempArrayList: ArrayList<CategoryItemCard>
@@ -43,7 +40,6 @@ class SearchFragment : Fragment() {
         Log.d(TAG,"Entered search fragment view")
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //val SearchRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
         SearchRecyclerList= arrayListOf<CategoryItemCard>()
         tempArrayList= arrayListOf<CategoryItemCard>()
 
@@ -61,7 +57,7 @@ class SearchFragment : Fragment() {
             Log.d(TAG, "SearchRecyclerList , ${it.Name}, ${it.Color}")
         }
 
-
+        //Citation: Adapted from Youtube tutorial - https://youtu.be/K5YnTvsVPRk
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 Log.d(TAG,"Inside onQuerySubmit")
@@ -93,10 +89,6 @@ class SearchFragment : Fragment() {
                 return false
             }
         })
-
-
-
-
         return root
     }
 

@@ -18,10 +18,10 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_splash)
 
+
+        //Citation: Referred to YouTube tutorial - https://youtu.be/hoK9OOP1KZw
         @Suppress (  "DEPRECATION" )
         window.insetsController?.hide(WindowInsets.Type.statusBars())
-
-
         @Suppress (  "DEPRECATION" )
         Handler().postDelayed(
             {

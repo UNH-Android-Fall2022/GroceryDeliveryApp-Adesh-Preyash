@@ -1,17 +1,30 @@
+//Citation: The entire file is referred to and adapted from live coding IceBreaker in class
+
 package com.example.grocerydelivery.ui.cart
 
-import android.os.Binder
-import com.example.grocerydelivery.ui.cart.CartViewModel
+import android.app.Activity
+import android.content.ContentValues.TAG
+import androidx.appcompat.app.AppCompatActivity
+import android.view.WindowInsets
+import android.widget.EditText
+import android.widget.Toast
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.grocerydelivery.R
+import com.example.grocerydelivery.activities.CheckoutActivity
 import com.example.grocerydelivery.databinding.FragmentCartBinding
+import com.example.grocerydelivery.ui.home.HomeFragmentDirections
+
 
 class CartFragment : Fragment() {
 
@@ -20,13 +33,11 @@ class CartFragment : Fragment() {
         var cartSum : Double = 0.0
         var shipping : Double=0.0
         var taxes: Double=0.0
+        var total: Double=0.0
 
     }
 
     private var _binding: FragmentCartBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private lateinit var mRecyclerView : RecyclerView
@@ -42,15 +53,17 @@ class CartFragment : Fragment() {
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         val root: View = binding.root
-//        for(cartItem in cartList){
-//            cartRecyclerList.add(
-//                CartCard(
-//                    cartItem.image,
-//                    cartItem.name,
-//                    cartItem.quantity.toString()+"Units"
-//                )
-//            )
-//        }
+
+
+        val checkoutButton =binding.checkoutBtn
+        checkoutButton.setOnClickListener{
+            Toast.makeText(
+                activity,
+                "Going to checkout page",
+                Toast.LENGTH_SHORT
+            ).show()
+            checkout_page()
+        }
 
         mRecyclerView= binding.recylerViewCart
         mRecyclerView.setHasFixedSize(true)
@@ -67,10 +80,15 @@ class CartFragment : Fragment() {
         mTaxes.text= taxes.toString()
 
         val mTotalAmount=binding.totalAmount
-        val total = cartSum+ shipping+taxes
+        total = cartSum+ shipping+taxes
         mTotalAmount.text= total.toString()
 
         return root
+    }
+    private fun checkout_page() {
+        Log.d(TAG,"Checkout btn clicked")
+        val action= CartFragmentDirections.actionNavigationCartToCheckoutActivity()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

@@ -36,24 +36,12 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+
+        // Citation : https://firebase.google.com/docs/auth/android/start#access_user_information
         val user = Firebase.auth.currentUser
         user?.let {
-            // Name, email address, and profile photo Url
-            //val name = user.displayName
             val email = user.email
-            //val photoUrl = user.photoUrl
             binding.emailView.text=email
-
-            /*val phone=user.phoneNumber.toString()
-            Log.d("GROCERY Phone number", phone)
-            binding.phoneView.text=phone*/
-
-            // Check if user's email is verified
-            //val emailVerified = user.isEmailVerified
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
             val uid = user.uid
 
             auth=Firebase.auth

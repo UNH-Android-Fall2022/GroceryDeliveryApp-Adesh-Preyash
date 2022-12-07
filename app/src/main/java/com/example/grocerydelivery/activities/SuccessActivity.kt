@@ -35,6 +35,8 @@ class SuccessActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+        //Referred to IceBreaker codebase
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 id.navigation_home, id.navigation_search, id.navigation_cart, id.navigation_profile

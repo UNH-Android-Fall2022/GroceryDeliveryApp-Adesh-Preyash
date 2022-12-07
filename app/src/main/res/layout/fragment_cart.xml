@@ -113,7 +113,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.example.grocerydelivery.utils.GSButton
-        android:id="@+id/GSButton"
+        android:id="@+id/checkoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -125,6 +125,7 @@
         android:paddingBottom="@dimen/btn_padding"
         android:textColor="@android:color/black"
         android:textSize="@dimen/btn_textSize"
+        android:clickable="true"
         android:text="CHECKOUT"
         app:layout_constraintTop_toBottomOf="@id/recycler_total"
         app:layout_constraintEnd_toEndOf="parent"

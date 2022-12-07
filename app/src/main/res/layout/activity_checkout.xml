@@ -8,12 +8,12 @@
 
 
     <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/names"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:ems="10"
-        android:hint="FullName"
+        android:hint="Full Name"
         android:layout_margin="16dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,14 +34,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/names" />
+        app:layout_constraintTop_toBottomOf="@id/name" />
     <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/address1"
+        android:id="@+id/address_instructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:ems="10"
-        android:hint="Street Address 1"
+        android:hint="Address Instructions(Unit #, Apt #,etc)"
         android:layout_margin="16dp"
         android:padding="10dp"
         android:inputType="text"
@@ -50,32 +50,49 @@
         app:layout_constraintHorizontal_bias="0.194"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Phone" />
-    <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/address2"
+
+
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/fragment_card"
+    android:layout_width="400dp"
+    android:layout_margin="15dp"
+    android:padding="10dp"
+    android:layout_height="200dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/address_instructions">
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/autocomplete_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:ems="10"
-        android:hint="Street Address 2"
-        android:layout_margin="16dp"
-        android:padding="10dp"
-        android:inputType="text"
-        android:maxLines="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.194"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        />
+</androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/autocomplete_response_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingTop="16dp"
+        android:textIsSelectable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/address1" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_card"/>
 
     <com.example.grocerydelivery.utils.GSButton
-        android:id="@+id/button"
+        android:id="@+id/orderSubmitBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/address2"
         android:layout_margin="16dp"
         android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/autocomplete_response_content"
         />
+
+
 
 
 

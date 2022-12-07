@@ -9,7 +9,11 @@
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.example.grocerydelivery.ui.cart.CartFragment"
-        android:label="CartFragment" />
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_navigation_cart_to_checkoutActivity"
+            app:destination="@id/checkoutActivity" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.grocerydelivery.ui.home.HomeFragment"
@@ -109,4 +113,9 @@
         android:name="com.example.grocerydelivery.ui.home.Categories.Dairy.CategoryDairyFragment"
         android:label="fragment_category_dairy"
         tools:layout="@layout/fragment_category_dairy" />
+    <activity
+        android:id="@+id/checkoutActivity"
+        android:name="com.example.grocerydelivery.activities.CheckoutActivity"
+        android:label="activity_checkout"
+        tools:layout="@layout/activity_checkout" />
 </navigation>

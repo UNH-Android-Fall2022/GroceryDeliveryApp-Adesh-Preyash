@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
+        //Citation : https://firebase.google.com/docs/auth/android/start#check_current_auth_state
         auth=Firebase.auth
 
         val loginButton : Button = findViewById(R.id.btn_login)
@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener{
             performLogin()
         }
+
         val register: GSTextView= findViewById(R.id.tv_dont_have_an_account)
         register.setOnClickListener{
             val intent= Intent(this, RegisterActivity::class.java)
@@ -38,13 +39,14 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
+    //Function to implement Firebase Auth to login user after 'Login' button is clicked
     fun performLogin()
     {
         Log.d("GROCERY text output", "Inside function call")
         val inputPassword=findViewById<EditText>(R.id.password_input)
         val inputUsername=findViewById<EditText>(R.id.username_input)
 
+        //if required fields are not provided, you cannot login
         if (inputPassword.text.isEmpty() || inputUsername.text.isEmpty() )
         {
             Toast.makeText(baseContext, "Please fill all fields",
@@ -56,6 +58,8 @@ class LoginActivity : AppCompatActivity() {
         val password=inputPassword.text.toString()
         val username=inputUsername.text.toString()
 
+
+        //Citation : https://firebase.google.com/docs/auth/android/start#sign_in_existing_users
         auth.signInWithEmailAndPassword(username, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -67,13 +71,11 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(baseContext, "Login Success",
                         Toast.LENGTH_SHORT).show()
-                    //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
-                    //updateUI(null)
                 }
             }
     }

@@ -1,3 +1,5 @@
+//Citation: The entire file is referred to and adapted from live coding IceBreaker in class
+
 package com.example.grocerydelivery.ui.cart
 
 import android.content.ContentValues.TAG
@@ -36,6 +38,7 @@ class CartAdapter (
 
         if(ImageSrc!="")
         {
+            //Citation : referred to https://square.github.io/picasso/
             Picasso.get().load(ImageSrc).into(holder.mImageView);
         }
 
@@ -44,13 +47,7 @@ class CartAdapter (
         holder.mTextView2.text = Size
         holder.mTextView3.text=Color
         holder.mTextView4.text= Price.toString()
-        holder.itemView.setOnClickListener {
-            Log.d(TAG, "Position clicked is $position")
-        }
 
-        holder.itemView.setOnClickListener {
-            Log.d(TAG, "Position clicked is $position")
-        }
     }
 
 
