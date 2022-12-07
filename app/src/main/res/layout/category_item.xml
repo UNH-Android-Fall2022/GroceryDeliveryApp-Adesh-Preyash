@@ -41,6 +41,7 @@
             android:layout_below="@id/text_view_2"
             android:text="Color"
             android:layout_toEndOf="@id/image_view"/>
+
         <com.example.grocerydelivery.utils.GSTextView
             android:id="@+id/price"
             android:layout_width="wrap_content"

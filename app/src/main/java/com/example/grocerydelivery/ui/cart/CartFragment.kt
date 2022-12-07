@@ -70,18 +70,23 @@ class CartFragment : Fragment() {
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter = CartAdapter(cartRecyclerList, this)
 
+        //Citation : https://www.folkstalk.com/2022/09/how-to-limit-decimal-in-double-kotlin-with-code-examples.html
+        cartSum=String.format("%.2f", cartSum).toDouble()
+        shipping=String.format("%.2f", shipping).toDouble()
+        taxes=String.format("%.2f", taxes).toDouble()
+
         val mCartTotal=binding.cartTotalAmount
-        mCartTotal.text= cartSum.toString()
+        mCartTotal.text= "$"+cartSum.toString()
 
         val mShippingCost=binding.shippingCost
-        mShippingCost.text= shipping.toString()
+        mShippingCost.text= "$"+shipping.toString()
 
         val mTaxes=binding.taxesAmount
-        mTaxes.text= taxes.toString()
+        mTaxes.text= "$"+taxes.toString()
 
         val mTotalAmount=binding.totalAmount
         total = cartSum+ shipping+taxes
-        mTotalAmount.text= total.toString()
+        mTotalAmount.text= "$"+total.toString()
 
         return root
     }

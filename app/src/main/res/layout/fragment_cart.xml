@@ -38,7 +38,7 @@
             <com.example.grocerydelivery.utils.GSTextViewBold
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-                android:width="270dp"
+                android:width="250dp"
                 android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:text="CART TOTAL" />
@@ -46,6 +46,7 @@
             <com.example.grocerydelivery.utils.GSTextViewBold
                 android:id="@+id/cart_total_amount"
                 android:layout_marginLeft="5dp"
+                android:width="75dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
@@ -56,7 +57,7 @@
 
             <com.example.grocerydelivery.utils.GSTextViewBold
                 android:id="@+id/textView4"
-                android:width="320dp"
+                android:width="250dp"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
 
             <com.example.grocerydelivery.utils.GSTextViewBold
                 android:id="@+id/textView6"
-                android:width="320dp"
+                android:width="250dp"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,7 +95,7 @@
 
             <com.example.grocerydelivery.utils.GSTextViewBold
                 android:id="@+id/textView9"
-                android:width="320dp"
+                android:width="250dp"
                 android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

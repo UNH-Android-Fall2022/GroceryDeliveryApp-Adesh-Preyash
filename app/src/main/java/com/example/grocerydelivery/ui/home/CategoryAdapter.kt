@@ -53,7 +53,7 @@ class CategoryAdapter(
         holder.mTextView1.text = Name
         holder.mTextView2.text = Size
         holder.mTextView3.text=Color
-        holder.mTextView4.text= Price.toString()
+        holder.mTextView4.text= "$"+Price.toString()
         holder.itemView.setOnClickListener {
             Log.d(TAG, "Position clicked is $position")
         }
