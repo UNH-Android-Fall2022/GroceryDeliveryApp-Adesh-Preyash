@@ -33,6 +33,18 @@
             />
     </FrameLayout>
 
+    <com.example.grocerydelivery.utils.GSTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginSeller"
+        android:clickable="true"
+        android:text="Login as Seller"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/lbl_text_view_textSize"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/f1_header_image"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.example.grocerydelivery.utils.GSTextViewBold
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"

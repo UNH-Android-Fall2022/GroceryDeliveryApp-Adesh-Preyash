@@ -31,92 +31,79 @@
             android:src="@drawable/logo" />
     </FrameLayout>
 
+    <com.example.grocerydelivery.utils.GSTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerSeller"
+        android:clickable="true"
+        android:text="Register as Seller"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/lbl_text_view_textSize"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/f1_header_image"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.example.grocerydelivery.utils.GSTextViewBold
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Sign up"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/title_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/f1_header_image" />
+
     <com.example.grocerydelivery.utils.GSEditText
         android:id="@+id/username_input"
         android:layout_width="261dp"
         android:layout_height="53dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
-        android:hint="Username/Email"
+        android:hint="Email"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
     <com.example.grocerydelivery.utils.GSEditText
         android:id="@+id/password_input"
         android:layout_width="252dp"
         android:layout_height="53dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
-
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_input"
         tools:ignore="MissingConstraints" />
-<!--
-    <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/phoneNumber"
-        android:layout_width="258dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="40dp"
-        android:autofillHints=""
-        android:hint="Contact No"
-        android:inputType="phone"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_input"
-        tools:ignore="MissingConstraints"
-        tools:text="+918920229232" />
-    <com.example.grocerydelivery.utils.GSButton
-        android:id="@+id/sendOtp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="36dp"
-        android:padding="10dp"
-        android:text="@string/send_otp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
-
-    <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/OTP"
-        android:layout_width="258dp"
-        android:layout_height="66dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/enter_otp_here"
-        android:inputType="phone"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSignup1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendOtp"
-        app:layout_constraintVertical_bias="0.457"
-        tools:ignore="MissingConstraints" />
-        -->
 
     <com.example.grocerydelivery.utils.GSButton
         android:id="@+id/buttonSignup1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="10dp"
-        android:text="@string/sign_up"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:paddingTop="@dimen/btn_padding"
+        android:paddingBottom="@dimen/btn_padding"
+        android:text="SIGN UP"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/btn_textSize"
+        app:layout_constraintTop_toBottomOf="@id/password_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
