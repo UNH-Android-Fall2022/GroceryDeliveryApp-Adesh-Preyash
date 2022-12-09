@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.grocerydelivery.activities.SplashActivity
 import com.example.grocerydelivery.databinding.FragmentSearchBinding
 import com.example.grocerydelivery.ui.home.CategoryAdapter
 import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment.Companion.allItemsList
@@ -43,14 +44,14 @@ class SearchFragment : Fragment() {
         SearchRecyclerList= arrayListOf<CategoryItemCard>()
         tempArrayList= arrayListOf<CategoryItemCard>()
 
-        SearchRecyclerList.addAll(allItemsList)
+        SearchRecyclerList.addAll(SplashActivity.allProductsList)
         mRecyclerView= binding.recyclerViewSearch
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         mRecyclerView.adapter= CategoryAdapter(tempArrayList, this)
-        allItemsList= allItemsList.distinct() as ArrayList<CategoryItemCard>
+        SplashActivity.allProductsList= SplashActivity.allProductsList.distinct() as ArrayList<CategoryItemCard>
         SearchRecyclerList= SearchRecyclerList.distinct() as ArrayList<CategoryItemCard>
-        allItemsList.forEach {
+        SplashActivity.allProductsList.forEach {
             Log.d(TAG, "allItemList , ${it.Name}, ${it.Color}")
         }
         SearchRecyclerList.forEach {
