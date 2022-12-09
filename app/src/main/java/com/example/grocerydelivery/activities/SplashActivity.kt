@@ -6,30 +6,23 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.WindowInsets
-import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivitySplashBinding
 import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
-import com.google.firebase.ktx.Firebase
 
 
 class SplashActivity : AppCompatActivity() {
 
     companion object{
         var allProductsList: ArrayList<CategoryItemCard> = ArrayList()
-
     }
     private lateinit var binding: ActivitySplashBinding
     private val TAG="GroceryAndroidDebug"
-    private val db = Firebase.firestore
     private lateinit var current_item: CategoryItemCard
     private lateinit var firestoreDb: FirebaseFirestore
-    private lateinit var mRecyclerView : RecyclerView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +70,7 @@ class SplashActivity : AppCompatActivity() {
             for (item in itemList)
             {
                 current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Price
+                    item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name
                 )
                 if (!categoryRecyclerList.contains(current_item)) {
                     categoryRecyclerList.add(current_item)

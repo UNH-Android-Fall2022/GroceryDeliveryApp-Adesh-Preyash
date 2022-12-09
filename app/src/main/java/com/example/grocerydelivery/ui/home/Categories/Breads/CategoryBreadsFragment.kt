@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.grocerydelivery.activities.SplashActivity
 import com.example.grocerydelivery.databinding.FragmentCatgeoryBreadsBinding
 import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment
@@ -51,43 +52,27 @@ open class CategoryBreadsFragment : Fragment() {
 
         _binding = FragmentCatgeoryBreadsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        dataLoad()
+
+        mRecyclerView= binding.recylerViewCategoryBreads
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
+        for (item in SplashActivity.allProductsList)
+        {
+            current_item= CategoryItemCard(
+                item.imageSrc,item.Name,item.Size,item.Color,item.Cost, item.Type
+            )
+
+            if ((!categoryRecyclerList.contains(current_item))&&(item.Type=="breads")) {
+                categoryRecyclerList.add(current_item)
+            }
+            mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
+        }
 
         return root
     }
 
-    fun dataLoad()
-    {
-        val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
-        Log.d(TAG,"Fetching Breads from Firebase")
-        firestoreDb = FirebaseFirestore.getInstance ()
-        val Reference=firestoreDb.collection("/product_category/breads/breads_list")
-        Reference.addSnapshotListener{snapshot,exception->
-            if (exception != null || snapshot == null)
-            {
-                Log. e(TAG,  "Exception when querying posts", exception)
-                return@addSnapshotListener
-            }
-
-            val itemList=snapshot.toObjects<CategoryData>()
-            Log.d(TAG, "DB CALL SUCCESS")
-            for (item in itemList)
-            {
-                current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Price
-                )
-                if (!categoryRecyclerList.contains(current_item)) {
-                    categoryRecyclerList.add(current_item)
-                    CategoryFruitsFragment.allItemsList.add(current_item)                }
-                mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
-
-            }
-        }
-        mRecyclerView= binding.recylerViewCategoryBreads
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
-        mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
-    }
     //Citation : https://stackoverflow.com/questions/40395067/android-back-button-not-working-in-fragment
     override fun onCreate( savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

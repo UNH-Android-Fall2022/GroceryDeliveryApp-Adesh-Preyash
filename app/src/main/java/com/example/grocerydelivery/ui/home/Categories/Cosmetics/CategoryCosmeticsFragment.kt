@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.grocerydelivery.activities.SplashActivity
 import com.example.grocerydelivery.databinding.FragmentCategoryCosmeticsBinding
 import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment
@@ -54,36 +55,23 @@ class CategoryCosmeticsFragment : Fragment() {
 
         _binding = FragmentCategoryCosmeticsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
-        Log.d("GroceryDeliverFirebaseAndroidDebug","Fetching from Firebase")
-        firestoreDb = FirebaseFirestore.getInstance ()
-        val Reference=firestoreDb.collection("/product_category/cosmetics/cosmetics_list")
-        Reference.addSnapshotListener{snapshot,exception->
-            if (exception != null || snapshot == null)
-            {
-                Log. e(TAG,  "Exception when querying posts", exception)
-                return@addSnapshotListener
-            }
 
-            val itemList=snapshot.toObjects<CategoryData>()
-            Log.d("CATEGORY_DB_CALL", "DB CALL SUCCESS")
-            for (item in itemList)
-            {
-                current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Price
-                )
-                if (!categoryRecyclerList.contains(current_item)) {
-                    categoryRecyclerList.add(current_item)
-                    CategoryFruitsFragment.allItemsList.add(current_item)
-                }
-                mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
-
-            }
-        }
         mRecyclerView= binding.recylerViewCategoryCosmetics
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
-        mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
+
+        val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
+        for (item in SplashActivity.allProductsList)
+        {
+            current_item= CategoryItemCard(
+                item.imageSrc,item.Name,item.Size,item.Color,item.Cost, item.Type
+            )
+
+            if ((!categoryRecyclerList.contains(current_item))&&(item.Type=="cosmetics")) {
+                categoryRecyclerList.add(current_item)
+            }
+            mRecyclerView.adapter = CategoryAdapter(categoryRecyclerList, this)
+        }
 
         return root
     }
