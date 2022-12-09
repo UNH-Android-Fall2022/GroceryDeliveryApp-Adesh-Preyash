@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.databinding.FragmentCategoryDairyBinding
+import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment
 
 import com.example.grocerydelivery.ui.home.CategoryAdapter
@@ -64,7 +65,7 @@ class CategoryDairyFragment : Fragment() {
                 return@addSnapshotListener
             }
 
-            val itemList=snapshot.toObjects<CategoryDairyData>()
+            val itemList=snapshot.toObjects<CategoryData>()
             Log.d("CATEGORY_DB_CALL", "DB CALL SUCCESS")
             for (item in itemList)
             {

@@ -6,16 +6,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.WindowInsets
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivitySplashBinding
-import com.example.grocerydelivery.ui.home.Categories.Breads.CategoryBreadsData
-import com.example.grocerydelivery.ui.home.Categories.Breads.CategoryBreadsFragment
-import com.example.grocerydelivery.ui.home.Categories.Fruits.CategoryFruitsFragment
-import com.example.grocerydelivery.ui.home.CategoryAdapter
+import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.CategoryItemCard
-import com.example.grocerydelivery.ui.home.HomeFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
@@ -77,7 +72,7 @@ class SplashActivity : AppCompatActivity() {
                 return@addSnapshotListener
             }
 
-            val itemList=snapshot.toObjects<CategoryBreadsData>()
+            val itemList=snapshot.toObjects<CategoryData>()
             Log.d(TAG, "DB CALL SUCCESS")
             for (item in itemList)
             {
@@ -90,8 +85,5 @@ class SplashActivity : AppCompatActivity() {
 
             }
         }
-
     }
-
-
 }
