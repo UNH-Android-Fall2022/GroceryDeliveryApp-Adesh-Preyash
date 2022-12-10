@@ -55,34 +55,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/f1_header_image" />
 
-    <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/username_input"
-        android:layout_width="261dp"
-        android:layout_height="53dp"
+<!--    <com.example.grocerydelivery.utils.GSEditText-->
+<!--        android:id="@+id/username_input"-->
+<!--        android:layout_width="261dp"-->
+<!--        android:layout_height="53dp"-->
+<!--        android:layout_marginTop="35dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:autofillHints=""-->
+<!--        android:hint="Email"-->
+<!--        android:inputType="text"-->
+<!--        android:padding="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_title" />-->
+
+<!--    <com.example.grocerydelivery.utils.GSEditText-->
+<!--        android:id="@+id/password_input"-->
+<!--        android:layout_width="252dp"-->
+<!--        android:layout_height="53dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:autofillHints=""-->
+<!--        android:hint="Password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:padding="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/username_input"-->
+<!--        tools:ignore="MissingConstraints" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/til_email"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:hint="Email"
-        android:inputType="text"
-        android:padding="10dp"
+        android:hint="@string/et_hint_email_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        >
 
-    <com.example.grocerydelivery.utils.GSEditText
-        android:id="@+id/password_input"
-        android:layout_width="252dp"
-        android:layout_height="53dp"
+        <com.example.grocerydelivery.utils.GSEditText
+            android:id="@+id/username_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="@dimen/et_padding"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/et_textSize"
+            tools:text="abc@gmail.com"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="10dp"
+        android:hint="@string/et_hint_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_input"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/til_email"
+        >
+        <com.example.grocerydelivery.utils.GSEditText
+            android:id="@+id/password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:padding="@dimen/et_padding"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/et_textSize"
+            tools:text="123456" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.example.grocerydelivery.utils.GSButton
         android:id="@+id/buttonSignup1"
@@ -98,7 +151,7 @@
         android:text="SIGN UP"
         android:textColor="@android:color/black"
         android:textSize="@dimen/btn_textSize"
-        app:layout_constraintTop_toBottomOf="@id/password_input"
+        app:layout_constraintTop_toBottomOf="@id/til_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -12,6 +12,8 @@ import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObjects
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 
 class SplashActivity : AppCompatActivity() {
@@ -42,8 +44,6 @@ class SplashActivity : AppCompatActivity() {
         data_load("cosmetics")
         Handler().postDelayed(
             {
-
-
                 // Launch the Main Activity
                     startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish() // Call this when your activity is done and should be closed.
@@ -70,13 +70,16 @@ class SplashActivity : AppCompatActivity() {
             for (item in itemList)
             {
                 current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name
+                    item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name,item.Uploaded // Added Boolean variable
                 )
+
                 if (!categoryRecyclerList.contains(current_item)) {
                     categoryRecyclerList.add(current_item)
-                    allProductsList.add(current_item)                }
+                    allProductsList.add(current_item)
+                }
 
             }
         }
     }
+
 }

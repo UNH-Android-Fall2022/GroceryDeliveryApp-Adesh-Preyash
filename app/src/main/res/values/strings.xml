@@ -38,4 +38,20 @@
     <string name="don_t_have_an_account">Don\'t have an account? Register</string>
     <string name="api_key">AIzaSyAhuTxWlEfoloHllPOTEdUSTc4k3AInQxg</string>
 
+
+    <!-- Citation : Spinner implementation - https://youtu.be/on_OrrX7Nw4-->
+    <string-array name="categories">
+        <item>Fruits</item>
+        <item>Vegetables</item>
+        <item>Dairy</item>
+        <item>Breads</item>
+        <item>Cosmetics</item>
+        <item>Cleaning</item>
+    </string-array>
+    <string-array name="sizes">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
 </resources>

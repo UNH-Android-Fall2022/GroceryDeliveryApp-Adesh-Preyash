@@ -2,10 +2,9 @@
 
 package com.example.grocerydelivery.ui.home
 
-import android.content.ContentValues.TAG
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -20,11 +19,13 @@ import com.example.grocerydelivery.ui.cart.CartFragment.Companion.cartRecyclerLi
 import com.example.grocerydelivery.ui.cart.CartFragment.Companion.cartSum
 import com.example.grocerydelivery.ui.cart.CartFragment.Companion.shipping
 import com.example.grocerydelivery.ui.cart.CartFragment.Companion.taxes
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
 
 
 class CategoryAdapter(
-
     private val mExampleList: ArrayList<CategoryItemCard>,
     private val context: Fragment
     ): RecyclerView.Adapter<CategoryAdapter.ExampleViewHolder>() {
@@ -44,8 +45,32 @@ class CategoryAdapter(
         return ExampleViewHolder(itemView)
     }
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
-        val (ImageSrc,Name, Size, Color, Price) = mExampleList[position]
-        if(ImageSrc!="")
+        val (ImageSrc,Name, Size, Color, Price, Type, Uploaded) = mExampleList[position]
+         val TAG="GroceryAndroidDebug"
+
+        //If product has been uploaded by a seller
+        if(Uploaded)
+        {
+            Log.d(TAG, "Uploaded file. Reaching cloud storage for Images")
+
+            // Citation : https://firebase.google.com/docs/storage/android/create-reference#create_a_reference
+            // Reference to an image file in Cloud Storage
+            val storageReference = Firebase.storage.reference
+
+            // Citation : https://firebase.google.com/docs/storage/android/download-files#download_data_via_url
+            storageReference.child("${Name}.jpg").downloadUrl.addOnSuccessListener {
+                // Got the download URL for 'users/me/profile.png'
+                    Log.d(TAG, "Received image success.")
+                    Picasso.get().load(it).resize(100,100).into(holder.mImageView)
+            }.addOnFailureListener {
+                // Handle any errors
+
+                Log.d(TAG, "Error in getting image. + ${it.toString()}")
+            }
+
+        }
+        //If product is from sample data
+        else if(ImageSrc!="")
         {
             //Citation : referred to https://square.github.io/picasso/
             Picasso.get().load(ImageSrc).resize(100,100).into(holder.mImageView);
@@ -80,4 +105,5 @@ class CategoryAdapter(
     override fun getItemCount(): Int {
         return mExampleList.size
     }
+
 }

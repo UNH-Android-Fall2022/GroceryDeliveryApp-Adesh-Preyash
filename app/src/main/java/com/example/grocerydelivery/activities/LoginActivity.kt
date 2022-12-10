@@ -37,6 +37,15 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Login as Seller button
+        val login_seller: GSTextView= findViewById(R.id.loginSeller)
+        login_seller.setOnClickListener{
+            val intent= Intent(this, ProductUploadActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
     //Function to implement Firebase Auth to login user after 'Login' button is clicked
     fun performLogin()
