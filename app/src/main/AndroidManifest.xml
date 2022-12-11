@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".RegisterSellerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductUploadActivity"
             android:exported="false" />
         <activity android:name=".activities.CheckoutActivity" />
@@ -43,6 +46,14 @@
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.LoginSellerActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RegisterSellerActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

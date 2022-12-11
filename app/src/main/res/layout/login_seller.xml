@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="MissingDefaultResource">
+    tools:context=".activities.LoginActivity">
 
 
     <FrameLayout
@@ -21,22 +21,22 @@
             android:contentDescription="App Logo"
             android:scaleType="center"
             android:src="@drawable/app_bg"/>
-
         <ImageView
             android:layout_width="@dimen/auth_logo_width_size"
             android:layout_height="@dimen/auth_logo_height_size"
             android:layout_gravity="center"
             android:contentDescription="@string/grocery_delivery"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            />
     </FrameLayout>
 
     <com.example.grocerydelivery.utils.GSTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/registerSeller"
+        android:id="@+id/loginSeller"
         android:clickable="true"
-        android:text="Register as Seller?"
+        android:text="Login as Customer"
         android:textColor="@color/colorSecondaryText"
         android:textSize="@dimen/lbl_text_view_textSize"
         android:padding="5dp"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:text="Sign up"
+        android:text="Login as Seller"
         android:textColor="@color/colorPrimaryText"
         android:textSize="@dimen/title_textSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,8 +109,24 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+    <com.example.grocerydelivery.utils.GSTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_forgot_password"
+        android:layout_marginEnd="16dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="@dimen/clickable_text_view_padding"
+        android:text="@string/lbl_forgot_password"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="@dimen/forgot_password_textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_password"/>
+
+
     <com.example.grocerydelivery.utils.GSButton
-        android:id="@+id/buttonSignup1"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -120,12 +136,32 @@
         android:gravity="center"
         android:paddingTop="@dimen/btn_padding"
         android:paddingBottom="@dimen/btn_padding"
-        android:text="SIGN UP"
+        android:text="@string/Login"
         android:textColor="@android:color/black"
         android:textSize="@dimen/btn_textSize"
-        app:layout_constraintTop_toBottomOf="@id/til_password"
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login">
 
+        <com.example.grocerydelivery.utils.GSTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_dont_have_an_account"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:padding="@dimen/clickable_text_view_padding"
+            android:text="Don't have a seller account? Register"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/lbl_text_view_textSize"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

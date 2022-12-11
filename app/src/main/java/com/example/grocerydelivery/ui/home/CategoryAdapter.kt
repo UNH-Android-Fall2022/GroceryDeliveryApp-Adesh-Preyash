@@ -58,6 +58,7 @@ class CategoryAdapter(
             val storageReference = Firebase.storage.reference
 
             // Citation : https://firebase.google.com/docs/storage/android/download-files#download_data_via_url
+            // Citation : https://stackoverflow.com/questions/39896511/load-image-from-firebase-storage-with-picasso-to-imageview-in-infowindow-picass
             storageReference.child("${Name}.jpg").downloadUrl.addOnSuccessListener {
                 // Got the download URL for 'users/me/profile.png'
                     Log.d(TAG, "Received image success.")

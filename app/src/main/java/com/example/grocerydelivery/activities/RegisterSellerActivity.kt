@@ -1,30 +1,28 @@
+// Citation : Adapted from RegisterActivity.kt
+
+
 package com.example.grocerydelivery.activities
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instance
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivityRegisterBinding
 import com.example.grocerydelivery.utils.GSTextView
 import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import io.grpc.InternalChannelz.instance
-import io.grpc.util.TransmitStatusRuntimeExceptionInterceptor.instance
-import okhttp3.internal.Internal.instance
 
-class RegisterActivity : AppCompatActivity() {
-
+class RegisterSellerActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private val TAG="GroceryAndroidDebug"
     private lateinit var auth: FirebaseAuth
@@ -37,13 +35,13 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.register_seller)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         _binding = ActivityRegisterBinding.inflate(layoutInflater)
         val root: View = binding.root
 
 
-        auth=Firebase.auth
+        auth= Firebase.auth
         FirebaseApp.initializeApp(this)
 
         val signupButton : Button = findViewById(R.id.buttonSignup1)
@@ -52,9 +50,9 @@ class RegisterActivity : AppCompatActivity() {
             performSignup()
         }
 
-        val register_seller= findViewById<GSTextView>(R.id.registerSeller)
-        register_seller.setOnClickListener{
-            val intent= Intent(this, RegisterSellerActivity::class.java)
+        val register_customer= findViewById<GSTextView>(R.id.registerCustomer)
+        register_customer.setOnClickListener{
+            val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
@@ -83,13 +81,13 @@ class RegisterActivity : AppCompatActivity() {
                     val userid = auth.currentUser!!.uid
 
                     // Citation : https://stackoverflow.com/questions/72347820/storing-data-of-currently-signned-user-in-firebase-firestore-in-kotlin
-                    val user = mapOf("email" to auth.currentUser!!.email,"type" to "customer")
+                    val user = mapOf("email" to auth.currentUser!!.email,"type" to "seller ")
                     val userRef = db.collection("users")
                     userRef.document(userid).set(user)
                         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
                         .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
 
-                    val intent= Intent(this, SuccessActivity::class.java)
+                    val intent= Intent(this, ProductUploadActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Success",
@@ -119,4 +117,4 @@ class RegisterActivity : AppCompatActivity() {
             //reload()
         }
     }
-}
+    }
