@@ -1,5 +1,6 @@
 package com.example.grocerydelivery.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -123,11 +124,7 @@ class CheckoutActivity : AppCompatActivity() {
         val cart_items=CartFragment.cartRecyclerList
         val cart_total=CartFragment.total.toString()
         writeOrderDetailsToFirebase(Name,Ph,addr_ins,address,cart_items,cart_total)
-        Toast.makeText(
-            this@CheckoutActivity,
-            "Order Placed Successfully",
-            Toast.LENGTH_SHORT
-        ).show()
+
     }
 
     //This function has been adapted from IceBreaker live coding in classes
@@ -148,6 +145,21 @@ class CheckoutActivity : AppCompatActivity() {
             .add(order)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Toast.makeText(
+                    this@CheckoutActivity,
+                    "Order Placed Successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+                CartFragment.cartRecyclerList.clear()
+                CartFragment.total=0.0
+                CartFragment.taxes=0.0
+                CartFragment.shipping=0.0
+                CartFragment.cartSum=0.0
+
+
+                val intent= Intent(this, SuccessActivity::class.java)
+                startActivity(intent)
+
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)

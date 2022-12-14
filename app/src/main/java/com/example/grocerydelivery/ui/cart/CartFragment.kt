@@ -86,6 +86,7 @@ class CartFragment : Fragment() {
 
         val mTotalAmount=binding.totalAmount
         total = cartSum+ shipping+taxes
+        total=String.format("%.2f", total).toDouble()
         mTotalAmount.text= "$"+total.toString()
 
         return root

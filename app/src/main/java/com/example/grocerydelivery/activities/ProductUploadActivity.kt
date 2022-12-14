@@ -177,8 +177,6 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
-
-
     }
 
     fun uploadImage()

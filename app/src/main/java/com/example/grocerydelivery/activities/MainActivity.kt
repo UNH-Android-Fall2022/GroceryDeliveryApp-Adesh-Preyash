@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+        binding.txtClickableSellerSignup.setOnClickListener {
+            val intent = Intent(this, RegisterSellerActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 
