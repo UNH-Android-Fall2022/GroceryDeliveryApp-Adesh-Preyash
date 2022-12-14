@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.WindowInsets
+import android.widget.Toast
 import com.example.grocerydelivery.R
 import com.example.grocerydelivery.databinding.ActivitySplashBinding
 import com.example.grocerydelivery.ui.home.Categories.CategoryData
 import com.example.grocerydelivery.ui.home.CategoryItemCard
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -25,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
     private val TAG="GroceryAndroidDebug"
     private lateinit var current_item: CategoryItemCard
     private lateinit var firestoreDb: FirebaseFirestore
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +60,7 @@ class SplashActivity : AppCompatActivity() {
         val categoryRecyclerList: ArrayList<CategoryItemCard> = ArrayList()
         Log.d(TAG,"Fetching $category_name from Firebase")
         firestoreDb = FirebaseFirestore.getInstance ()
-        val Reference=firestoreDb.collection("/product_category/$category_name/${category_name}_list")
+        val Reference=firestoreDb.collection("/inventory")
         Reference.addSnapshotListener{snapshot,exception->
             if (exception != null || snapshot == null)
             {
@@ -69,14 +72,24 @@ class SplashActivity : AppCompatActivity() {
             Log.d(TAG, "DB CALL SUCCESS")
             for (item in itemList)
             {
-                current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name,item.Uploaded // Added Boolean variable
-                )
+                //Citation : https://www.baeldung.com/kotlin/string-comparison
+                if(item.Type.equals(category_name,true))
+                {
+                    current_item= CategoryItemCard(
+                        item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name,item.Uploaded // Added Boolean variable
+                    )
+                    Log.d(TAG, "Received Item $current_item")
 
-                if (!categoryRecyclerList.contains(current_item)) {
-                    categoryRecyclerList.add(current_item)
-                    allProductsList.add(current_item)
+                    if (!categoryRecyclerList.contains(current_item)) {
+                        categoryRecyclerList.add(current_item)
+                        allProductsList.add(current_item)
+                    }
                 }
+                else
+                {
+                    Log.d(TAG, "No Received Items in category $category_name")
+                }
+
 
             }
         }

@@ -164,12 +164,15 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         )
         category_selected=category_selected.lowercase()
         //Writing order_details to Firebase
-        db.collection("product_category/$category_selected/${category_selected}_list")
+        db.collection("inventory")
             .add(product)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                 Toast.makeText(baseContext, "Product Submitted Successfully",
                     Toast.LENGTH_SHORT).show()
+
+                val intent= Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
