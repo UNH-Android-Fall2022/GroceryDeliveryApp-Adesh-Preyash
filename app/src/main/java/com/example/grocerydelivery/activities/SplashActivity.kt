@@ -74,6 +74,7 @@ class SplashActivity : AppCompatActivity() {
             Log.d(TAG, "DB CALL SUCCESS")
             for (item in itemList)
             {
+                // Citation : https://stackoverflow.com/questions/55113849/how-to-get-firestore-document-id-from-document-snapshot
                 val doc_id=snapshot.documents[i++].id
                 //Citation : https://www.baeldung.com/kotlin/string-comparison
                 if(item.Type.equals(category_name,true))
