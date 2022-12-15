@@ -150,6 +150,9 @@ class CheckoutActivity : AppCompatActivity() {
                     "Order Placed Successfully",
                     Toast.LENGTH_SHORT
                 ).show()
+
+
+                //Emptying cart and clearing values after order placed
                 CartFragment.cartRecyclerList.clear()
                 CartFragment.total=0.0
                 CartFragment.taxes=0.0

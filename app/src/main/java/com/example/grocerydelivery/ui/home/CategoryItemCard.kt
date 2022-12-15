@@ -2,4 +2,4 @@
 
 package com.example.grocerydelivery.ui.home
 
-data class CategoryItemCard (val imageSrc:String,val Name: String, val Size: String, val Color: String, val Cost: Double, val Type: String, val Uploaded: Boolean )
+data class CategoryItemCard (val id: String,val imageSrc:String,val Name: String, val Size: String, val Color: String, val Cost: Double, val Type: String, val Uploaded: Boolean )

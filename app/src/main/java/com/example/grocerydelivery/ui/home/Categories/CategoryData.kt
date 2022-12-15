@@ -4,6 +4,7 @@ data class CategoryData
     (
     //    val id: String ="",
 //    var quantity: Int=0,
+    var id:String="",
     var imageSrc: String="",
     var Name: String="",
     var Size: String="",

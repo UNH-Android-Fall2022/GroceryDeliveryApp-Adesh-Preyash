@@ -147,7 +147,7 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
     {
         Log.d(TAG, "Inside WriteToDatabase function")
 
-        uploadImage()
+
         val prod_name=productName.text.toString()
         val prod_color=productColor.text.toString()
         val prod_price=productPrice.text.toString().toDouble()
@@ -156,7 +156,7 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         val product= hashMapOf(
             "Name" to prod_name,
             "Color" to prod_color,
-            "imageSrc" to imageForProduct,
+            "imageSrc" to "",
             "Price" to prod_price,
             "Type" to category_selected,
             "Size" to size_selected,
@@ -170,6 +170,7 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
                 Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                 Toast.makeText(baseContext, "Product Submitted Successfully",
                     Toast.LENGTH_SHORT).show()
+                uploadImage(documentReference.id)
 
                 val intent= Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -179,7 +180,7 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
             }
     }
 
-    fun uploadImage()
+    fun uploadImage(id: String)
     {
         Log.d(TAG, "Inside uploadImage function")
 
@@ -187,13 +188,13 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         // Create a storage reference from our app
         val storageRef = storage.reference
 
-        val prod_name=productName.text.toString()
+        val product_imageRef=id
 
         // Citation : https://firebase.google.com/docs/storage/android/upload-files#upload_files
         var uploadTask: UploadTask?
-        var file = Uri.fromFile(File("path/to/${prod_name}.jpg"))
-        val riversRef = storageRef.child("${file.lastPathSegment}")
-        uploadTask = riversRef.putFile(Uri.parse(imageForProduct))
+        var file = Uri.fromFile(File("path/to/${product_imageRef}.jpg"))
+        val Ref = storageRef.child("${file.lastPathSegment}")
+        uploadTask = Ref.putFile(Uri.parse(imageForProduct))
         // Register observers to listen for when the download is done or if it fails
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads

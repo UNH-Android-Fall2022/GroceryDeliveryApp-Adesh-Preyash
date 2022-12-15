@@ -45,13 +45,13 @@ class CategoryAdapter(
         return ExampleViewHolder(itemView)
     }
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
-        val (ImageSrc,Name, Size, Color, Price, Type, Uploaded) = mExampleList[position]
+        val (id,ImageSrc,Name, Size, Color, Price, Type, Uploaded) = mExampleList[position]
          val TAG="GroceryAndroidDebug"
 
         //If product has been uploaded by a seller
         if(Uploaded)
         {
-            Log.d(TAG, "Uploaded file. Reaching cloud storage for Images")
+            Log.d(TAG, "Uploaded file. Reaching cloud storage for Images with id $id" )
 
             // Citation : https://firebase.google.com/docs/storage/android/create-reference#create_a_reference
             // Reference to an image file in Cloud Storage
@@ -59,7 +59,7 @@ class CategoryAdapter(
 
             // Citation : https://firebase.google.com/docs/storage/android/download-files#download_data_via_url
             // Citation : https://stackoverflow.com/questions/39896511/load-image-from-firebase-storage-with-picasso-to-imageview-in-infowindow-picass
-            storageReference.child("${Name}.jpg").downloadUrl.addOnSuccessListener {
+            storageReference.child("${id}.jpg").downloadUrl.addOnSuccessListener {
                 // Got the download URL for 'users/me/profile.png'
                     Log.d(TAG, "Received image success.")
                     Picasso.get().load(it).resize(100,100).into(holder.mImageView)

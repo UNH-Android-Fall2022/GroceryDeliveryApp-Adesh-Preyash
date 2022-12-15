@@ -69,14 +69,17 @@ class SplashActivity : AppCompatActivity() {
             }
 
             val itemList=snapshot.toObjects<CategoryData>()
+            var i=0
+            //var doc_id=snapshot.id
             Log.d(TAG, "DB CALL SUCCESS")
             for (item in itemList)
             {
+                val doc_id=snapshot.documents[i++].id
                 //Citation : https://www.baeldung.com/kotlin/string-comparison
                 if(item.Type.equals(category_name,true))
                 {
                     current_item= CategoryItemCard(
-                        item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name,item.Uploaded // Added Boolean variable
+                        doc_id,item.imageSrc,item.Name,item.Size,item.Color,item.Price,category_name,item.Uploaded // Added Boolean variable
                     )
                     Log.d(TAG, "Received Item $current_item")
 
@@ -84,10 +87,6 @@ class SplashActivity : AppCompatActivity() {
                         categoryRecyclerList.add(current_item)
                         allProductsList.add(current_item)
                     }
-                }
-                else
-                {
-                    Log.d(TAG, "No Received Items in category $category_name")
                 }
 
 

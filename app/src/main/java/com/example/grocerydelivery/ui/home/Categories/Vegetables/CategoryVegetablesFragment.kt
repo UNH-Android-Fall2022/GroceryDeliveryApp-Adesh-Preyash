@@ -61,7 +61,7 @@ class CategoryVegetablesFragment : Fragment() {
         for (item in SplashActivity.allProductsList)
         {
             current_item= CategoryItemCard(
-                    item.imageSrc,item.Name,item.Size,item.Color,item.Cost, item.Type,item.Uploaded //Added Boolean variable to indicate if product is uploaded or from Sample data
+                item.id,item.imageSrc,item.Name,item.Size,item.Color,item.Cost, item.Type,item.Uploaded //Added Boolean variable to indicate if product is uploaded or from Sample data
                 )
 
                 if ((!categoryRecyclerList.contains(current_item))&&(item.Type=="vegetables")) {
