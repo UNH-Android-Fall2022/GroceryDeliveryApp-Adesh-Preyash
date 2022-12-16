@@ -124,6 +124,8 @@
         android:gravity="center"
         android:paddingTop="@dimen/btn_padding"
         android:paddingBottom="@dimen/btn_padding"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:textColor="@android:color/black"
         android:textSize="@dimen/btn_textSize"
         android:clickable="true"

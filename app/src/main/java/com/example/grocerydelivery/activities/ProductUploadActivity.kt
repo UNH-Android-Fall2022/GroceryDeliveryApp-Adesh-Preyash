@@ -68,14 +68,9 @@ class ProductUploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         size_spinner!!.setAdapter(sizeAdapter)
         size_spinner!!.setOnItemSelectedListener(this)
 
-
-
         productName = findViewById<GSEditText>(R.id.product_name)
         productColor = findViewById<GSEditText>(R.id.product_color)
         productPrice=findViewById<GSEditText>(R.id.product_price)
-
-
-
 
         product_view=findViewById<ImageView>(R.id.product_image)
         val uploadImageBtn=findViewById<GSButton>(R.id.btn_upload_image)

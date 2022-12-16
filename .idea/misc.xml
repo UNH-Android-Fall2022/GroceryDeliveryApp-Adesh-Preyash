@@ -11,8 +11,14 @@
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable/ic_baseline_local_grocery_store_24.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_breads.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_cleaning.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_cosmetics.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/ic_dairy.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_fruits.xml" value="0.2265" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable/ic_vegetables.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/image_icon_background.xml" value="0.161" />
         <entry key="app/src/main/res/font/montserrat.xml" value="0.23125" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.2566137566137566" />
